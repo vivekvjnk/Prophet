@@ -1,0 +1,455 @@
+chunk_indices:
+- 0
+- 1
+- 2
+- 3
+entities:
+- description: A system that uses an LLM to decide the control flow of an application.
+  name: Agent
+  type: Concepts
+- description: A system composed of multiple smaller, independent agents working together.
+  name: Multi-Agent System
+  type: Concepts
+- description: The separation of agents in a multi-agent system makes it easier to
+    develop, test, and maintain.
+  name: Modularity
+  type: Benefits
+- description: Creating expert agents focused on specific domains enhances the overall
+    system performance.
+  name: Specialization
+  type: Benefits
+- description: Explicit control over agent communication improves system management.
+  name: Control
+  type: Benefits
+- description: Each agent can communicate with every other agent, and any agent can
+    decide which other agent to call next.
+  name: Network Architecture
+  type: Multi-Agent Architectures
+- description: Each agent communicates with a single supervisor agent that decides
+    which agent should be called next.
+  name: Supervisor Architecture
+  type: Multi-Agent Architectures
+- description: A special case of supervisor architecture where individual agents are
+    represented as tools. The supervisor agent uses a tool-calling LLM to decide which
+    agent tools to call and the arguments to pass.
+  name: Supervisor (tool-calling)
+  type: Concepts
+- description: A multi-agent system with a supervisor of supervisors, generalizing
+    the supervisor architecture to allow for more complex control flows.
+  name: Hierarchical
+  type: Concepts
+- description: Each agent communicates with only a subset of agents. Parts of the
+    flow are deterministic, and some agents can decide which other agents to call
+    next.
+  name: Custom Multi-Agent Workflow
+  type: Processes
+- description: A common pattern in multi-agent interactions where one agent hands
+    off control to another, specifying a destination agent and payload information.
+  name: Handoffs
+  type: Concepts
+- description: Represents an individual agent in a multi-agent system that executes
+    its steps and decides whether to finish execution or route to another agent.
+  name: Agent Node
+  type: Components
+- description: An object used in LangGraph to combine control flow and state updates,
+    allowing agents to specify which agent to call next and the information to pass.
+  name: Command Object
+  type: Technologies and Frameworks
+- description: The target agent to navigate to during a handoff, specified as the
+    name of the node to go to.
+  name: Destination
+  type: Configuration and Parameters
+- description: Information passed from one agent to another during a handoff, typically
+    including state updates.
+  name: Payload
+  type: Inputs and Outputs
+- description: The process of updating the state within a graph, typically involving
+    setting key-value pairs to reflect changes or transitions.
+  name: Graph State Update
+  type: Processes
+- description: A concept where each agent node is itself a graph, allowing for hierarchical
+    and nested structures in graph-based systems.
+  name: Subgraph
+  type: Concepts
+- description: An object used to encapsulate commands within a graph system, including
+    navigation instructions, state updates, and graph specifications.
+  name: Command Object
+  type: Components
+- description: A parameter within the Command object that specifies the target node
+    or agent to navigate to.
+  name: Goto
+  type: Configuration and Parameters
+- description: A parameter within the Command object that specifies state updates,
+    typically in the form of key-value pairs.
+  name: Update
+  type: Configuration and Parameters
+- description: A parameter within the Command object that specifies which graph to
+    navigate to, with options like `Command.PARENT` indicating the parent graph.
+  name: Graph
+  type: Configuration and Parameters
+- description: A concept of agents that use a tool-calling pattern, often seen in
+    agent-based systems where actions are wrapped as tools for better modularity and
+    control flow.
+  name: ReAct-style Tool-calling Agents
+  type: Concepts
+- description: The process of transferring control or state from one agent to another,
+    often used in distributed or multi-agent systems.
+  name: Handoff
+  type: Processes
+- description: A specific implementation pattern where nodes are wrapped in functions
+    annotated with `Command` to support visualization and control flow management
+    in graph-based systems.
+  name: Node Function with Command Annotation
+  type: Technologies and Frameworks
+- description: A specific example of a handoff process where an agent (e.g., `alice`)
+    transfers control or state to another agent (`bob`).
+  name: Transfer to Bob
+  type: Processes
+- description: A data type indicating that the result of the command is expected to
+    be "bob", used in type annotations for clarity and validation.
+  name: Literal["bob"]
+  type: DataTypes
+- description: A requirement or constraint related to supporting visualization features,
+    particularly when subgraphs communicate using `Command(graph=Command.PARENT)`.
+  name: Visualization Support
+  type: Constraints and Requirement
+- description: The concept of a parent graph in a hierarchical graph structure, where
+    subgraphs can navigate to their parent context.
+  name: Parent Graph
+  type: Concepts
+- description: The process of updating the state within an agent or node, often used
+    to reflect changes in the system's configuration or operational status.
+  name: State Update
+  type: Processes
+- description: The process of navigating between different subgraphs within a parent
+    graph, allowing nodes to communicate and transfer control flow.
+  name: Subgraph Navigation
+  type: Processes
+- description: The technology or framework that enables the visualization of interactions
+    and communications between subgraphs, particularly when using `Command(graph=Command.PARENT)`.
+  name: Visualization Support for Subgraphs
+  type: Technologies and Frameworks
+- description: The process of wrapping handoffs between agents within a tool-calling
+    framework, enabling the inclusion of both state updates and control flow changes.
+  name: Handoff Wrapping in Tools
+  type: Processes
+- description: A specific annotation or mechanism used to enable visualization support
+    when subgraphs communicate using `Command(graph=Command.PARENT)`, typically involving
+    wrapping nodes in functions with `Command` annotations.
+  name: Command Annotation for Visualization
+  type: Technologies and Frameworks
+- description: The process of integrating handoff mechanisms within tools, allowing
+    agents to transition control flow between different subgraphs or nodes while updating
+    their states.
+  name: Wrapping handoffs in tools
+  type: Processes
+- description: A data structure that represents a command or action to be executed
+    by an agent, typically containing information about the next agent to call and
+    any updates to the state.
+  name: Command
+  type: DataTypes
+- description: A prebuilt component for creating a React-based chat agent executor,
+    which can be used to facilitate interactions between agents in a multi-agent system.
+  name: create_react_agent
+  type: Components
+- description: A prebuilt component that represents a tool node within a multi-agent
+    architecture. It is responsible for executing specific tools and returning the
+    results as `Command` objects.
+  name: ToolNode
+  type: Components
+- description: A process or function that iterates over a list of tool calls, invokes
+    each corresponding tool, and collects the resulting `Command` objects into a list.
+  name: call_tools
+  type: Processes
+- description: A multi-agent architecture where agents are represented as graph nodes.
+    Each agent can communicate with every other agent in a many-to-many fashion and
+    decide which agent to call next based on their internal logic or external inputs.
+  name: Network Architecture
+  type: Concepts
+- description: A technology or framework used for managing the state of agents within
+    a multi-agent system, allowing them to maintain and update their internal states
+    as they interact with other agents.
+  name: StateGraph
+  type: Technologies and Frameworks
+- description: A data structure that represents the state of messages within an agent's
+    context. It typically includes information about the conversation history or any
+    relevant message content.
+  name: MessagesState
+  type: DataTypes
+- description: An entity representing the starting point or initial state in a multi-agent
+    system, often used as a reference for initiating interactions between agents.
+  name: START
+  type: Entities (Real-World Objects)
+- description: An entity representing the end point or final state in a multi-agent
+    system, indicating that all interactions have been completed and the process should
+    terminate.
+  name: END
+  type: Entities (Real-World Objects)
+- description: A technology or framework provided by OpenAI for facilitating chat-based
+    interactions with large language models (LLMs), enabling agents to generate responses
+    based on user inputs or internal logic.
+  name: ChatOpenAI
+  type: Technologies and Frameworks
+- description: A function within a multi-agent system that interacts with the 'MessagesState'
+    entity. It processes input from the state, invokes a model to generate a response,
+    and returns a command indicating which next agent to call or if the execution
+    should end.
+  name: agent_1
+  type: Processes
+- description: A function within a multi-agent system that interacts with the 'MessagesState'
+    entity. It processes input from the state, invokes a model to generate a response,
+    and returns a command indicating which next agent to call or if the execution
+    should end.
+  name: agent_2
+  type: Processes
+- description: An object used within the multi-agent system to store and manage messages.
+    It is passed between agents and updated based on interactions with the model,
+    facilitating communication and decision-making processes among agents.
+  name: MessagesState
+  type: Entities (Real-World Objects)
+- description: An agent in the multi-agent architecture that processes messages and
+    decides which subsequent agent to call based on the model's response. It interacts
+    with the 'MessagesState' to update message content and determine the next step
+    in the communication flow.
+  name: agent_1
+  type: Entities (Real-World Objects)
+- description: Another agent in the multi-agent architecture that processes messages
+    and decides which subsequent agent to call based on the model's response. It interacts
+    with the 'MessagesState' to update message content and determine the next step
+    in the communication flow.
+  name: agent_2
+  type: Entities (Real-World Objects)
+relationships:
+- description: An agent is a component of a multi-agent system.
+  source_entity: Agent
+  strength: 8.0
+  target_entity: Multi-Agent System
+- description: A multi-agent system benefits from modularity by separating agents
+    for easier development, testing, and maintenance.
+  source_entity: Multi-Agent System
+  strength: 9.0
+  target_entity: Modularity
+- description: A multi-agent system can leverage specialization by creating expert
+    agents focused on specific domains to enhance overall performance.
+  source_entity: Multi-Agent System
+  strength: 9.0
+  target_entity: Specialization
+- description: A multi-agent system allows for explicit control over agent communication,
+    improving system management.
+  source_entity: Multi-Agent System
+  strength: 8.5
+  target_entity: Control
+- description: In a network architecture, each agent can communicate with every other
+    agent, and any agent can decide which other agent to call next.
+  source_entity: Multi-Agent System
+  strength: 7.0
+  target_entity: Network Architecture
+- description: In a supervisor architecture, each agent communicates with a single
+    supervisor agent that decides which agent should be called next.
+  source_entity: Multi-Agent System
+  strength: 7.0
+  target_entity: Supervisor Architecture
+- description: The supervisor agent uses individual agents represented as tools.
+  source_entity: Supervisor (tool-calling)
+  strength: 8.0
+  target_entity: Agent Node
+- description: Hierarchical architecture generalizes the supervisor architecture.
+  source_entity: Hierarchical
+  strength: 7.0
+  target_entity: Supervisor (tool-calling)
+- description: Each agent communicates with a subset of agents in this workflow.
+  source_entity: Custom Multi-Agent Workflow
+  strength: 8.5
+  target_entity: Agent Node
+- description: Handoffs involve one agent handing off control to another agent node.
+  source_entity: Handoffs
+  strength: 9.0
+  target_entity: Agent Node
+- description: During handoffs, the destination specifies the target agent to navigate
+    to.
+  source_entity: Handoffs
+  strength: 8.5
+  target_entity: Destination
+- description: The payload contains information passed from one agent to another during
+    handoffs.
+  source_entity: Handoffs
+  strength: 8.5
+  target_entity: Payload
+- description: The command object allows agents to specify which agent to call next
+    and the information to pass.
+  source_entity: Command Object
+  strength: 9.0
+  target_entity: Agent Node
+- description: The Command object is used to update the graph state.
+  source_entity: Command Object
+  strength: 8.0
+  target_entity: Graph State Update
+- description: The Goto attribute in the Command object specifies the target entity
+    to navigate to.
+  source_entity: Goto
+  strength: 7.0
+  target_entity: Command Object
+- description: The Update attribute in the Command object is used to update the state.
+  source_entity: Update
+  strength: 7.0
+  target_entity: Command Object
+- description: Subgraphs can be updated as part of the graph state.
+  source_entity: Subgraph
+  strength: 6.0
+  target_entity: Graph State Update
+- description: ReAct-style tool-calling agents often wrap handoffs in tools for better
+    control flow management.
+  source_entity: ReAct-style Tool-calling Agents
+  strength: 8.0
+  target_entity: Handoff Wrapping in Tools
+- description: The Transfer to Bob function returns a Command object that navigates
+    to "bob".
+  source_entity: Transfer to Bob
+  strength: 7.0
+  target_entity: Command Object
+- description: The Literal["bob"] is used as the target in the Goto attribute of the
+    Command object.
+  source_entity: Literal["bob"]
+  strength: 6.0
+  target_entity: Goto
+- description: Visualization support for subgraphs requires wrapping them in node
+    functions with Command annotations.
+  source_entity: Visualization Support
+  strength: 8.0
+  target_entity: Node Function with Command Annotation
+- description: The graph attribute in the Command object can be set to Command.PARENT
+    to indicate navigation within the parent graph.
+  source_entity: Parent Graph
+  strength: 7.0
+  target_entity: Command Object
+- description: The Command object is used to perform state updates.
+  source_entity: State Update
+  strength: 8.0
+  target_entity: Command Object
+- description: The Command object can be used for navigating within subgraphs.
+  source_entity: Subgraph Navigation
+  strength: 7.0
+  target_entity: Command Object
+- description: Visualization support for subgraphs requires wrapping them in node
+    functions with Command annotations.
+  source_entity: Visualization Support for Subgraphs
+  strength: 8.0
+  target_entity: Node Function with Command Annotation
+- description: ReAct-style tool-calling agents often wrap handoffs in tools for better
+    control flow management.
+  source_entity: Handoff Wrapping in Tools
+  strength: 8.0
+  target_entity: ReAct-style Tool-calling Agents
+- description: Command annotations are used to support visualization, especially for
+    subgraphs.
+  source_entity: Command Annotation for Visualization
+  strength: 7.0
+  target_entity: Node Function with Command Annotation
+- description: ReAct-style tool-calling agents often wrap handoffs in tools for better
+    control flow management.
+  source_entity: Wrapping handoffs in tools
+  strength: 8.0
+  target_entity: ReAct-style Tool-calling Agents
+- description: ChatOpenAI is used by agent_1 to generate responses.
+  source_entity: ChatOpenAI
+  strength: 8.0
+  target_entity: agent_1
+- description: ChatOpenAI is used by agent_2 to generate responses.
+  source_entity: ChatOpenAI
+  strength: 8.0
+  target_entity: agent_2
+- description: StateGraph manages the state transitions, including MessagesState.
+  source_entity: StateGraph
+  strength: 9.0
+  target_entity: MessagesState
+- description: The graph starts with agent_1 as the initial node.
+  source_entity: START
+  strength: 7.0
+  target_entity: agent_1
+- description: END signifies the termination of the graph execution.
+  source_entity: END
+  strength: 6.0
+  target_entity: None
+- description: Command can route to agent_2 based on the decision made by the model.
+  source_entity: Command
+  strength: 7.5
+  target_entity: agent_2
+- description: Command can route to agent_3 based on the decision made by the model.
+  source_entity: Command
+  strength: 7.5
+  target_entity: agent_3
+- description: Command can end the graph execution if the model decides to do so.
+  source_entity: Command
+  strength: 6.0
+  target_entity: END
+- description: create_react_agent is mentioned but not directly related to other entities
+    in the provided context.
+  source_entity: create_react_agent
+  strength: 3.0
+  target_entity: None
+- description: ToolNode can be used to call tools, which is a potential action within
+    the graph.
+  source_entity: ToolNode
+  strength: 5.0
+  target_entity: call_tools
+- description: Network Architecture is mentioned but not directly related to other
+    entities in the provided context.
+  source_entity: Network Architecture
+  strength: 3.0
+  target_entity: None
+- description: The 'ToolNode' is used within the 'call_tools' function to invoke tools
+    and collect commands.
+  source_entity: ToolNode
+  strength: 8.0
+  target_entity: call_tools
+- description: The 'Network Architecture' described involves agents defined as graph
+    nodes, which are part of the 'StateGraph'.
+  source_entity: Network Architecture
+  strength: 7.0
+  target_entity: StateGraph
+- description: In the network architecture, agents communicate with each other using
+    'MessagesState' to exchange information.
+  source_entity: Network Architecture
+  strength: 6.0
+  target_entity: MessagesState
+- description: The process starts with 'agent_1', which initiates the sequence of
+    actions in the multi-agent architecture.
+  source_entity: START
+  strength: 9.0
+  target_entity: agent_1
+- description: Both 'create_react_agent' and 'ToolNode' are components that can be
+    used to create agents capable of executing tools, which generate 'Command' objects.
+  source_entity: create_react_agent
+  strength: 8.0
+  target_entity: ToolNode
+- description: '''call_tools'' is a function that processes tool calls and returns
+    a list of ''Command'' objects generated by the tools.'
+  source_entity: call_tools
+  strength: 9.0
+  target_entity: Command
+- description: There is an interaction between 'agent_1' and 'agent_2' where 'agent_1'
+    can call 'agent_2' based on its decision-making process using the model's response.
+  source_entity: agent_1
+  strength: 7.0
+  target_entity: agent_2
+- description: Similarly, 'agent_2' can also call 'agent_1', creating a bidirectional
+    interaction between the two agents.
+  source_entity: agent_2
+  strength: 7.0
+  target_entity: agent_1
+- description: '''StateGraph'' manages the state transitions and interactions within
+    the system, including the ''MessagesState'' which holds the messages exchanged
+    between agents.'
+  source_entity: StateGraph
+  strength: 6.0
+  target_entity: MessagesState
+- description: The 'ChatOpenAI' model is used by 'agent_1' to make decisions and generate
+    responses that determine the next steps in the system's flow.
+  source_entity: ChatOpenAI
+  strength: 8.0
+  target_entity: agent_1
+- description: Similarly, 'ChatOpenAI' is also used by 'agent_2' for decision-making
+    and generating responses that influence the system's progression.
+  source_entity: ChatOpenAI
+  strength: 8.0
+  target_entity: agent_2

@@ -1,0 +1,17 @@
+[graphrag_loc_search_filter_entities]
+system="""
+You are filtering retrieved entities from a knowledge graph based on relevance to a user query. Each entity has:
+Name (identifier)
+Description (brief info)
+Type (category)
+Distance (lower = more relevant)
+Task:
+- Keep all the entities that helps to address the query based on description and type.
+- Prefer entities with lower distances.
+- Return relevant entity names with a short reason.
+========================================
+Retrieved entities: 
+{entities}
+========================================
+{format_instructions}
+"""

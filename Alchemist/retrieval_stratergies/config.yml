@@ -1,0 +1,52 @@
+plugins:
+  GraphRAGGlobalSearch:
+    schema: 
+      type: object
+      description: "Schema for inter-process communication between Odysseus and Alchemist"
+      required:
+        - query
+        - retrieval_method
+        - retrievals
+      properties:
+        query:
+          type: string
+          description: "Query to the Prophet system"
+        retrieval_method:
+          type: string
+          description: "Retrieval mechanism (e.g., GraphRAG, SimGRAG)"
+        retrievals:
+          type: array
+          description: "List of retrieved information from Odysseus"
+          items:
+            type: object
+            additionalProperties: true  # Allows dynamic structure for retrievals
+  GraphRAGLocalSearch:
+    schema: 
+        type: object
+        description: "Schema for inter-process communication between Odysseus and Alchemist"
+        required:
+          - query
+          - retrieval_method
+          - retrieval_sources
+          - retrievals
+        properties:
+          query:
+            type: string
+            description: "Query to the Prophet system"
+          retrieval_method:
+            type: string
+            description: "Retrieval mechanism (e.g., GraphRAG, SimGRAG)"
+          retrieval_sources:
+            type: array
+            description: "List of sources from which retrieval should happen" 
+            items:
+              type: string
+              additionalProperties: true  # Allows dynamic structure for retrievals
+          retrievals:
+            type: array
+            description: "List of retrieved information from Odysseus"
+            items:
+              type: object
+              additionalProperties: true  # Allows dynamic structure for retrievals
+  GraphRAGDriftSearch:
+    schema: none

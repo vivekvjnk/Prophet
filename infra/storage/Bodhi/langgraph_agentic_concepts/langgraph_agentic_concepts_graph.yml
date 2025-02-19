@@ -1,0 +1,377 @@
+directed: false
+multigraph: false
+graph: {}
+nodes:
+- type: CONCEPTS
+  description: An agent is a system that uses an LLM to decide the control flow of
+    an application.
+  id: AGENT
+- type: COMPONENTS
+  description: Allows an LLM to make a single decision. ; A router allows an LLM to
+    select a single step from a specified set of options, exhibiting a relatively
+    limited level of control.
+  id: ROUTER
+- type: PROCESSES
+  description: Structured outputs with LLMs work by providing a specific format or
+    schema that the LLM should follow in its response. This is similar to tool calling
+    but more general.
+  id: STRUCTURED OUTPUT
+- type: TECHNOLOGIES AND FRAMEWORKS
+  description: Instructing the LLM to respond in a specific format via the system
+    prompt.
+  id: PROMPT ENGINEERING
+- type: TECHNOLOGIES AND FRAMEWORKS, DATATYPES
+  description: A human-readable data serialization standard for all programming languages.
+    ; A human-readable data serialization language that is commonly used for configuration
+    files and in applications where data is being stored or transmitted over a network.
+  id: YAML
+- type: TECHNOLOGIES AND FRAMEWORKS
+  description: A vocabulary that allows you to annotate and validate JSON documents.
+    It defines the structure of valid JSON data, including the types of values that
+    are allowed for each property. ; A vocabulary that allows you to annotate and
+    validate JSON documents.
+  id: JSON SCHEMA
+- type: DATATYPES
+  description: An object containing player information such as name and batting average.
+    ; An object representing a player with properties such as name and batting average.
+  id: PLAYER
+- type: CONCEPTS, DATATYPES
+  description: A common daily habit.
+  id: HABIT
+- type: CONCEPTS, DATATYPES
+  description: An environmentally friendly alternative to the habit. ; An environmentally
+    friendly alternative to a habit.
+  id: SUSTAINABLE ALTERNATIVE
+- type: PROCESSES
+  description: Using post-processing to extract structured data from LLM responses.
+  id: OUTPUT PARSERS
+- type: PROCESSES, CONCEPTS
+  description: The process by which LLMs (Large Language Models) call external tools
+    or functions to perform specific tasks. ; Leveraging built-in tool calling capabilities
+    of some LLMs to generate structured outputs. ; The ability of large language models
+    (LLMs) to call external tools or functions, allowing for more complex and interactive
+    applications.
+  id: TOOL CALLING
+- type: DATATYPES
+  description: Crucial for routing as they ensure the LLM's decision can be reliably
+    interpreted and acted upon by the system.
+  id: STRUCTURED OUTPUTS
+- type: PROCESSES
+  description: The LLM can make a series of decisions, one after another, instead
+    of just one.
+  id: MULTI-STEP DECISION MAKING
+- type: PROCESSES
+  description: The LLM can choose from and use a variety of tools to accomplish tasks.
+  id: TOOL ACCESS
+- type: TECHNOLOGIES AND FRAMEWORKS, CONCEPTS
+  description: A method for building language models that can reason and take actions
+    based on their environment. ; A popular general purpose agent architecture that
+    combines multi-step decision making, memory, and planning.
+  id: REACT
+- type: CONCEPTS
+  description: Enabling the agent to retain and use information from previous steps.
+    ; The capability of agents to retain and utilize information across multiple steps
+    of problem-solving, crucial for context retention and decision-making.
+  id: MEMORY
+- type: CONCEPTS
+  description: Empowering the LLM to create and follow multi-step plans to achieve
+    goals.
+  id: PLANNING
+- type: TECHNOLOGIES AND FRAMEWORKS
+  description: An architecture that allows for more complex and flexible agent behaviors,
+    going beyond simple routing to enable dynamic problem-solving with multiple steps.
+  id: TOOL CALLING AGENT
+- type: ENTITIES (REAL-WORLD OBJECTS)
+  description: External systems often require a particular input schema or payload,
+    rather than natural language. When we bind an API as a tool, we give the model
+    awareness of the required input schema.
+  id: API
+- type: TECHNOLOGIES AND FRAMEWORKS
+  description: A framework that provides tools and functionalities for building language
+    models, including support for tool calling and memory management.
+  id: LANGCHAIN
+- type: PROCESSES
+  description: A process in LangChain where any Python function can be passed to enable
+    the model to call external tools.
+  id: CHATMODEL.BIND_TOOLS(FUNCTION)
+- type: COMPONENTS
+  description: A component of an agent's memory system that enables recall of information
+    from previous interactions, such as past messages in a conversation. ; A component
+    of an agent's memory system that allows access to information acquired during
+    earlier steps in a sequence.
+  id: SHORT-TERM MEMORY
+- type: TECHNOLOGIES AND FRAMEWORKS
+  description: A user-defined schema specifying the exact structure of memory to retain,
+    used in LangGraph for memory implementation.
+  id: STATE
+- type: TECHNOLOGIES AND FRAMEWORKS
+  description: A mechanism in LangGraph to store state at every step across different
+    interactions, allowing customization of the memory system.
+  id: CHECKPOINTERS
+- type: CONCEPTS
+  description: An architectural pattern where an LLM is called repeatedly in a while-loop.
+    At each step, the agent decides which tools to call and what inputs to use, then
+    executes those tools and feeds the outputs back into the LLM as observations.
+  id: REACT ARCHITECTURE
+- type: TECHNOLOGIES AND FRAMEWORKS
+  description: An interface that simplifies the process of enabling tool calling in
+    LangChain by allowing any Python function to be passed into `ChatModel.bind_tools(function)`.
+  id: TOOL CALLING INTERFACE
+- type: CONCEPTS
+  description: The practice of optimizing how an agent retains and utilizes information,
+    enhancing its ability to maintain context, learn from past experiences, and make
+    informed decisions over time.
+  id: EFFECTIVE MEMORY MANAGEMENT
+- type: PROCESSES
+  description: The process of providing input or instructions to an LLM to guide its
+    output or behavior.
+  id: PROMPTING
+- type: PROCESSES
+  description: The process of interpreting and extracting information from raw text
+    or data generated by an LLM.
+  id: PARSING
+- type: TECHNOLOGIES AND FRAMEWORKS
+  description: An interface that allows communication with LLMs using structured messages,
+    as opposed to plain text input.
+  id: MESSAGES-BASED INTERFACE
+- type: CONCEPTS
+  description: The capability of tools or systems to accept more than one input parameter
+    for processing.
+  id: MULTIPLE INPUTS
+- type: CONSTRAINTS AND REQUIREMENT
+  description: A limitation where only one tool can be called or executed in a single
+    interaction with an LLM.
+  id: SINGLE TOOL AT A TIME
+- type: CONCEPTS
+  description: The capability of calling or executing more than one tool in a single
+    interaction with an LLM.
+  id: MULTIPLE TOOLS AT A TIME
+- type: PROCESSES
+  description: A process where the LLM explicitly generates a reasoning step before
+    deciding which tools to call, as part of the ReAct method.
+  id: THOUGHT STEP
+- type: CONCEPTS
+  description: The design and implementation of unique or tailored agent systems that
+    can be optimized for specific tasks.
+  id: CUSTOM AGENT ARCHITECTURES
+- type: COMPONENTS
+  description: A component in an agent architecture responsible for directing traffic
+    or requests to the appropriate tools or services.
+  id: ROUTERS
+- type: COMPONENTS
+  description: Agents that use tool-calling as a mechanism to interact with external
+    systems or functions.
+  id: TOOL-CALLING AGENTS
+- type: PROCESSES
+  description: A process where human intervention is integrated into the agent system
+    to enhance reliability and decision-making, especially for sensitive tasks.
+  id: HUMAN-IN-THE-LOOP
+- id: SINGLE DECISION MAKING
+- id: BATTING AVERAGE
+links:
+- weight: 8.0
+  description: A router is an agent architecture that allows an LLM to select a single
+    step from a specified set of options.
+  source: AGENT
+  target: ROUTER
+- weight: 8.0
+  description: An agent can control application flow, including generating structured
+    outputs.
+  source: AGENT
+  target: STRUCTURED OUTPUT
+- weight: 7.0
+  description: A router allows an LLM to select a single step from a specified set
+    of options, which could involve producing structured output.
+  source: ROUTER
+  target: STRUCTURED OUTPUT
+- weight: 6.0
+  description: A router allows an LLM to make a single decision.
+  source: ROUTER
+  target: SINGLE DECISION MAKING
+- weight: 7.0
+  description: Structured outputs with LLMs work by providing a specific format or
+    schema, which is similar to tool calling but more general, and prompt engineering
+    involves instructing the LLM to respond in a specific format via the system prompt.
+  source: STRUCTURED OUTPUT
+  target: PROMPT ENGINEERING
+- weight: 6.0
+  description: JSON Schema can be used to define the structure of valid JSON data
+    for structured outputs with LLMs, providing a specific format or schema that the
+    LLM should follow in its response.
+  source: STRUCTURED OUTPUT
+  target: JSON SCHEMA
+- weight: 5.0
+  description: While not explicitly stated, prompt engineering can involve using YAML
+    to define the system prompt for instructing the LLM to respond in a specific format.
+  source: PROMPT ENGINEERING
+  target: YAML
+- weight: 5.0
+  description: Both YAML and JSON Schema are used for data serialization and validation.
+  source: YAML
+  target: JSON SCHEMA
+- weight: 5.0
+  description: Players can have habits that are relevant in the context of their activities
+    or performance.
+  source: PLAYER
+  target: HABIT
+- weight: 4.0
+  description: A player's batting average is a measure of their performance in baseball.
+  source: PLAYER
+  target: BATTING AVERAGE
+- weight: 12.0
+  description: Habits can be replaced with sustainable alternatives to improve environmental
+    impact. ; A sustainable alternative is an environmentally friendly option for
+    a common daily habit.
+  source: HABIT
+  target: SUSTAINABLE ALTERNATIVE
+- weight: 8.0
+  description: Output parsers are used to extract structured data from LLM responses.
+  source: OUTPUT PARSERS
+  target: STRUCTURED OUTPUTS
+- weight: 7.0
+  description: Tool calling leverages built-in tool calling capabilities of some LLMs
+    to generate structured outputs.
+  source: TOOL CALLING
+  target: STRUCTURED OUTPUTS
+- weight: 7.0
+  description: Task involves using APIs with tool calling to return outputs adhering
+    to the required schema.
+  source: TOOL CALLING
+  target: API
+- weight: 9.0
+  description: LangChain provides support for tool calling.
+  source: TOOL CALLING
+  target: LANGCHAIN
+- weight: 8.5
+  description: The ReAct architecture involves repeatedly calling tools, which is
+    related to tool calling.
+  source: TOOL CALLING
+  target: REACT ARCHITECTURE
+- weight: 9.0
+  description: The ReAct method uses tool-calling as a mechanism for LLMs to interact
+    with external tools or functions.
+  source: TOOL CALLING
+  target: REACT
+- weight: 8.0
+  description: Tool-calling is facilitated through the messages-based interface, allowing
+    structured communication with LLMs.
+  source: TOOL CALLING
+  target: MESSAGES-BASED INTERFACE
+- weight: 9.0
+  description: The tool calling agent expands the LLM's control by enabling multi-step
+    decision making.
+  source: MULTI-STEP DECISION MAKING
+  target: TOOL CALLING AGENT
+- weight: 8.0
+  description: ReAct is a popular general purpose agent architecture that combines
+    multi-step decision making, memory, and planning.
+  source: MULTI-STEP DECISION MAKING
+  target: REACT
+- weight: 9.0
+  description: The tool calling agent allows the LLM to choose from and use a variety
+    of tools to accomplish tasks.
+  source: TOOL ACCESS
+  target: TOOL CALLING AGENT
+- weight: 8.0
+  description: ReAct is a popular general purpose agent architecture that combines
+    multi-step decision making, memory, and planning.
+  source: REACT
+  target: MEMORY
+- weight: 8.0
+  description: ReAct is a popular general purpose agent architecture that combines
+    multi-step decision making, memory, and planning.
+  source: REACT
+  target: PLANNING
+- weight: 8.5
+  description: The ReAct implementation uses messages to prompt the LLM, leveraging
+    the modern message-based interface.
+  source: REACT
+  target: MESSAGES-BASED INTERFACE
+- weight: 8.0
+  description: The ReAct implementation allows tools that require multiple inputs,
+    improving flexibility and capability.
+  source: REACT
+  target: MULTIPLE INPUTS
+- weight: 7.5
+  description: The ReAct implementation supports calling multiple tools in a single
+    interaction with an LLM.
+  source: REACT
+  target: MULTIPLE TOOLS AT A TIME
+- weight: 8.0
+  description: The paper used "prompting + parsing of raw output," indicating a relationship
+    between ReAct and Parsing.
+  source: REACT
+  target: PARSING
+- weight: 9.0
+  description: LangChain provides tools and functionalities for memory management.
+  source: MEMORY
+  target: LANGCHAIN
+- weight: 8.5
+  description: Long-term memory is another component of the broader memory system.
+    ; Short-term memory is a component of the broader memory system.
+  source: MEMORY
+  target: SHORT-TERM MEMORY
+- weight: 8.5
+  description: Effective memory management is crucial for optimizing how an agent
+    retains and utilizes information.
+  source: MEMORY
+  target: EFFECTIVE MEMORY MANAGEMENT
+- weight: 8.5
+  description: This process is part of the LangChain framework.
+  source: LANGCHAIN
+  target: CHATMODEL.BIND_TOOLS(FUNCTION)
+- weight: 9.0
+  description: State is used in LangGraph for memory implementation.
+  source: LANGCHAIN
+  target: STATE
+- weight: 9.0
+  description: Checkpointers are a mechanism in LangGraph to store state at every
+    step.
+  source: LANGCHAIN
+  target: CHECKPOINTERS
+- weight: 9.0
+  description: The tool calling interface simplifies enabling tool calling in LangChain.
+  source: LANGCHAIN
+  target: TOOL CALLING INTERFACE
+- weight: 15.0
+  description: Effective memory management is crucial for optimizing how an agent
+    retains and utilizes information, which is directly applicable to LangChain's
+    memory implementation. ; Effective memory management is crucial for LangChain's
+    memory implementation, enabling agents to maintain context and make informed decisions.
+  source: LANGCHAIN
+  target: EFFECTIVE MEMORY MANAGEMENT
+- weight: 23.0
+  description: The ReAct architecture involves repeatedly calling tools, which relates
+    to tool calling in LangChain. This relationship can be strengthened by explicitly
+    linking the ReAct architecture to LangChain's tool calling capabilities. ; The
+    ReAct architecture involves repeatedly calling tools, which is directly related
+    to LangChain's tool calling capabilities. ; The ReAct architecture is used within
+    LangChain for planning, where an LLM repeatedly calls tools in a while-loop to
+    solve user requests.
+  source: LANGCHAIN
+  target: REACT ARCHITECTURE
+- weight: 15.0
+  description: While the content highlights the difference in calling multiple tools,
+    there is no explicit relationship showing how these two concepts are related or
+    contrasted within the ReAct implementation. ; The ReAct implementation allows
+    for calling multiple tools at a time, which is an advancement over the paper's
+    limitation of calling only a single tool at a time. This relationship highlights
+    the evolution and improvement in the tool-calling capability within the ReAct
+    framework.
+  source: SINGLE TOOL AT A TIME
+  target: MULTIPLE TOOLS AT A TIME
+- weight: 7.0
+  description: Custom agent architectures often include routers to direct traffic
+    or requests to appropriate tools or services.
+  source: CUSTOM AGENT ARCHITECTURES
+  target: ROUTERS
+- weight: 6.5
+  description: Custom agent architectures can incorporate tool-calling agents, which
+    use tool-calling as a mechanism for interaction.
+  source: CUSTOM AGENT ARCHITECTURES
+  target: TOOL-CALLING AGENTS
+- weight: 7.0
+  description: The human-in-the-loop concept is often integrated into custom agent
+    architectures to ensure oversight and decision-making.
+  source: CUSTOM AGENT ARCHITECTURES
+  target: HUMAN-IN-THE-LOOP

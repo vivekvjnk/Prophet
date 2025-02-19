@@ -1,0 +1,245 @@
+"# Multi-agent Systems\n\nAn [agent](./agentic_concepts.md#agent-architectures) is\
+  \ _a system that uses an LLM to decide the control flow of an application_. As you\
+  \ develop these systems, they might grow more complex over time, making them harder\
+  \ to manage and scale. For example, you might run into the following problems:\n\
+  \n- agent has too many tools at its disposal and makes poor decisions about which\
+  \ tool to call next\n- context grows too complex for a single agent to keep track\
+  \ of\n- there is a need for multiple specialization areas in the system (e.g. planner,\
+  \ researcher, math expert, etc.)\n\nTo tackle these, you might consider breaking\
+  \ your application into multiple smaller, independent agents and composing them\
+  \ into a **multi-agent system**. These independent agents can be as simple as a\
+  \ prompt and an LLM call, or as complex as a [ReAct](./agentic_concepts.md#react-implementation)\
+  \ agent (and more!).\n\nThe primary benefits of using multi-agent systems are:\n\
+  \n- **Modularity**: Separate agents make it easier to develop, test, and maintain\
+  \ agentic systems.\n- **Specialization**: You can create expert agents focused on\
+  \ specific domains, which helps with the overall system performance.\n- **Control**:\
+  \ You can explicitly control how agents communicate (as opposed to relying on function\
+  \ calling).\n\n## Multi-agent architectures\n\n![](./img/multi_agent/architectures.png)\n\
+  \nThere are several ways to connect agents in a multi-agent system:\n\n- **Network**:\
+  \ each agent can communicate with [every other agent](https://langchain-ai.github.io/langgraph/tutorials/multi_agent/multi-agent-collaboration/).\
+  \ Any agent can decide which other agent to call next.\n- **Supervisor**: each agent\
+  \ communicates with a single [supervisor](https://langchain-ai.github.io/langgraph/tutorials/multi_agent/agent_supervisor/)\
+  \ agent. Supervisor agent makes decisions on which agent should be called next.\n\
+  - **Supervisor (tool-calling)**: this is a special case of supervisor architecture.\
+  \ Individual agents can be represented as tools. In this case, a supervisor agent\
+  \ uses a tool-calling LLM to decide which of the agent tools to call, as well as\
+  \ the arguments to pass to those agents.\n- **Hierarchical**: you can define a multi-agent\
+  \ system with [a supervisor of supervisors](https://langchain-ai.github.io/langgraph/tutorials/multi_agent/hierarchical_agent_teams/).\
+  \ This is a generalization of the supervisor architecture and allows for more complex\
+  \ control flows.\n- **Custom multi-agent workflow**: each agent communicates with\
+  \ only a subset of agents. Parts of the flow are deterministic, and only some agents\
+  \ can decide which other agents to call next.\n\n### Handoffs\n\nIn multi-agent\
+  \ architectures, agents can be represented as graph nodes. Each agent node executes\
+  \ its step(s) and decides whether to finish execution or route to another agent,\
+  \ including potentially routing to itself (e.g., running in a loop). A common pattern\
+  \ in multi-agent interactions is handoffs, where one agent hands off control to\
+  \ another. Handoffs allow you to specify:\n\n- __destination__: target agent to\
+  \ navigate to (e.g., name of the node to go to)\n- __payload__: [information to\
+  \ pass to that agent](#communication-between-agents) (e.g., state update)\n\nTo\
+  \ implement handoffs in LangGraph, agent nodes can return [`Command`](./low_level.md#command)\
+  \ object that allows you to combine both control flow and state updates:\n\n```python\n\
+  def agent(state) -> Command[Literal[\"agent\", \"another_agent\"]]:\n    # the condition\
+  \ for routing/halting can be anything, e.g. LLM tool call / structured output, etc.\n\
+  \    goto = get_next_agent(...)  # 'agent' / 'another_agent'\n    return Command(\n\
+  \        # Specify which agent to call next\n        goto=goto,\n        # Update\
+  \ the graph state\n        update={\"my_state_key\": \"my_state_value\"}\n    )\n\
+  ```\n\nIn a more complex scenario where each agent node is itself a graph (i.e.,\
+  \ a [subgraph](./low_level.md#subgraphs)), a node in one of the agent subgraphs\
+  \ might want to navigate to a different agent. For example, if you have two agents,\
+  \ `alice` and `bob` (subgraph nodes in a parent graph), and `alice` needs to navigate\
+  \ to `bob`, you can set `graph=Command.PARENT` in the `Command` object:\n\n```python\n\
+  def some_node_inside_alice(state)\n    return Command(\n        goto=\"bob\",\n\
+  \        update={\"my_state_key\": \"my_state_value\"},\n        # specify which\
+  \ graph to navigate to (defaults to the current graph)\n        graph=Command.PARENT,\n\
+  \    )\n```\n\n!!! note\n    If you need to support visualization for subgraphs\
+  \ communicating using `Command(graph=Command.PARENT)` you would need to wrap them\
+  \ in a node function with `Command` annotation, e.g. instead of this:\n\n    ```python\n\
+  \    builder.add_node(alice)\n    ```\n\n    you would need to do this:\n\n    ```python\n\
+  \    def call_alice(state) -> Command[Literal[\"bob\"]]:\n        return alice.invoke(state)\n\
+  \n    builder.add_node(\"alice\", call_alice)\n    ```\n\n#### Handoffs as tools\n\
+  \nOne of the most common agent types is a ReAct-style tool-calling agents. For those\
+  \ types of agents, a common pattern is wrapping a handoff in a tool call, e.g.:\n\
+  \n```python\ndef transfer_to_bob(state):\n    \"\"\"Transfer to bob.\"\"\"\n   \
+  \ return Command(\n        goto=\"bob\",\n        update={\"my_state_key\": \"my_state_value\"\
+  },\n        graph=Command.PARENT,\n    )\n```\n\nThis is a special case of updating\
+  \ the graph state from tools where in addition the state update, the control flow\
+  \ is included as well.\n\n!!! important\n\n    If you want to use tools that return\
+  \ `Command`, you can either use prebuilt [`create_react_agent`][langgraph.prebuilt.chat_agent_executor.create_react_agent]\
+  \ / [`ToolNode`][langgraph.prebuilt.tool_node.ToolNode] components, or implement\
+  \ your own tool-executing node that collects `Command` objects returned by the tools\
+  \ and returns a list of them, e.g.:\n    \n    ```python\n    def call_tools(state):\n\
+  \        ...\n        commands = [tools_by_name[tool_call[\"name\"]].invoke(tool_call)\
+  \ for tool_call in tool_calls]\n        return commands\n    ```\n\nLet's now take\
+  \ a closer look at the different multi-agent architectures.\n\n### Network\n\nIn\
+  \ this architecture, agents are defined as graph nodes. Each agent can communicate\
+  \ with every other agent (many-to-many connections) and can decide which agent to\
+  \ call next. This architecture is good for problems that do not have a clear hierarchy\
+  \ of agents or a specific sequence in which agents should be called.\n\n\n```python\n\
+  from typing import Literal\nfrom langchain_openai import ChatOpenAI\nfrom langgraph.graph\
+  \ import StateGraph, MessagesState, START, END\n\nmodel = ChatOpenAI()\n\ndef agent_1(state:\
+  \ MessagesState) -> Command[Literal[\"agent_2\", \"agent_3\", END]]:\n    # you\
+  \ can pass relevant parts of the state to the LLM (e.g., state[\"messages\"])\n\
+  \    # to determine which agent to call next. a common pattern is to call the model\n\
+  \    # with a structured output (e.g. force it to return an output with a \"next_agent\"\
+  \ field)\n    response = model.invoke(...)\n    # route to one of the agents or\
+  \ exit based on the LLM's decision\n    # if the LLM returns \"__end__\", the graph\
+  \ will finish execution\n    return Command(\n        goto=response[\"next_agent\"\
+  ],\n        update={\"messages\": [response[\"content\"]]},\n    )\n\ndef agent_2(state:\
+  \ MessagesState) -> Command[Literal[\"agent_1\", \"agent_3\", END]]:\n    response\
+  \ = model.invoke(...)\n    return Command(\n        goto=response[\"next_agent\"\
+  ],\n        update={\"messages\": [response[\"content\"]]},\n    )\n\ndef agent_3(state:\
+  \ MessagesState) -> Command[Literal[\"agent_1\", \"agent_2\", END]]:\n    ...\n\
+  \    return Command(\n        goto=response[\"next_agent\"],\n        update={\"\
+  messages\": [response[\"content\"]]},\n    )\n\nbuilder = StateGraph(MessagesState)\n\
+  builder.add_node(agent_1)\nbuilder.add_node(agent_2)\nbuilder.add_node(agent_3)\n\
+  \nbuilder.add_edge(START, \"agent_1\")\nnetwork = builder.compile()\n```\n\n###\
+  \ Supervisor\n\nIn this architecture, we define agents as nodes and add a supervisor\
+  \ node (LLM) that decides which agent nodes should be called next. We use [`Command`](./low_level.md#command)\
+  \ to route execution to the appropriate agent node based on supervisor's decision.\
+  \ This architecture also lends itself well to running multiple agents in parallel\
+  \ or using [map-reduce](../how-tos/map-reduce.ipynb) pattern.\n\n```python\nfrom\
+  \ typing import Literal\nfrom langchain_openai import ChatOpenAI\nfrom langgraph.graph\
+  \ import StateGraph, MessagesState, START, END\n\nmodel = ChatOpenAI()\n\ndef supervisor(state:\
+  \ MessagesState) -> Command[Literal[\"agent_1\", \"agent_2\", END]]:\n    # you\
+  \ can pass relevant parts of the state to the LLM (e.g., state[\"messages\"])\n\
+  \    # to determine which agent to call next. a common pattern is to call the model\n\
+  \    # with a structured output (e.g. force it to return an output with a \"next_agent\"\
+  \ field)\n    response = model.invoke(...)\n    # route to one of the agents or\
+  \ exit based on the supervisor's decision\n    # if the supervisor returns \"__end__\"\
+  , the graph will finish execution\n    return Command(goto=response[\"next_agent\"\
+  ])\n\ndef agent_1(state: MessagesState) -> Command[Literal[\"supervisor\"]]:\n \
+  \   # you can pass relevant parts of the state to the LLM (e.g., state[\"messages\"\
+  ])\n    # and add any additional logic (different models, custom prompts, structured\
+  \ output, etc.)\n    response = model.invoke(...)\n    return Command(\n       \
+  \ goto=\"supervisor\",\n        update={\"messages\": [response]},\n    )\n\ndef\
+  \ agent_2(state: MessagesState) -> Command[Literal[\"supervisor\"]]:\n    response\
+  \ = model.invoke(...)\n    return Command(\n        goto=\"supervisor\",\n     \
+  \   update={\"messages\": [response]},\n    )\n\nbuilder = StateGraph(MessagesState)\n\
+  builder.add_node(supervisor)\nbuilder.add_node(agent_1)\nbuilder.add_node(agent_2)\n\
+  \nbuilder.add_edge(START, \"supervisor\")\n\nsupervisor = builder.compile()\n```\n\
+  \nCheck out this [tutorial](https://langchain-ai.github.io/langgraph/tutorials/multi_agent/agent_supervisor/)\
+  \ for an example of supervisor multi-agent architecture.\n\n### Supervisor (tool-calling)\n\
+  \nIn this variant of the [supervisor](#supervisor) architecture, we define individual\
+  \ agents as **tools** and use a tool-calling LLM in the supervisor node. This can\
+  \ be implemented as a [ReAct](./agentic_concepts.md#react-implementation)-style\
+  \ agent with two nodes \u2014 an LLM node (supervisor) and a tool-calling node that\
+  \ executes tools (agents in this case).\n\n```python\nfrom typing import Annotated\n\
+  from langchain_openai import ChatOpenAI\nfrom langgraph.prebuilt import InjectedState,\
+  \ create_react_agent\n\nmodel = ChatOpenAI()\n\n# this is the agent function that\
+  \ will be called as tool\n# notice that you can pass the state to the tool via InjectedState\
+  \ annotation\ndef agent_1(state: Annotated[dict, InjectedState]):\n    # you can\
+  \ pass relevant parts of the state to the LLM (e.g., state[\"messages\"])\n    #\
+  \ and add any additional logic (different models, custom prompts, structured output,\
+  \ etc.)\n    response = model.invoke(...)\n    # return the LLM response as a string\
+  \ (expected tool response format)\n    # this will be automatically turned to ToolMessage\n\
+  \    # by the prebuilt create_react_agent (supervisor)\n    return response.content\n\
+  \ndef agent_2(state: Annotated[dict, InjectedState]):\n    response = model.invoke(...)\n\
+  \    return response.content\n\ntools = [agent_1, agent_2]\n# the simplest way to\
+  \ build a supervisor w/ tool-calling is to use prebuilt ReAct agent graph\n# that\
+  \ consists of a tool-calling LLM node (i.e. supervisor) and a tool-executing node\n\
+  supervisor = create_react_agent(model, tools)\n```\n\n### Hierarchical\n\nAs you\
+  \ add more agents to your system, it might become too hard for the supervisor to\
+  \ manage all of them. The supervisor might start making poor decisions about which\
+  \ agent to call next, the context might become too complex for a single supervisor\
+  \ to keep track of. In other words, you end up with the same problems that motivated\
+  \ the multi-agent architecture in the first place.\n\nTo address this, you can design\
+  \ your system _hierarchically_. For example, you can create separate, specialized\
+  \ teams of agents managed by individual supervisors, and a top-level supervisor\
+  \ to manage the teams.\n\n```python\nfrom typing import Literal\nfrom langchain_openai\
+  \ import ChatOpenAI\nfrom langgraph.graph import StateGraph, MessagesState, START,\
+  \ END\nfrom langgraph.types import Command\nmodel = ChatOpenAI()\n\n# define team\
+  \ 1 (same as the single supervisor example above)\n\ndef team_1_supervisor(state:\
+  \ MessagesState) -> Command[Literal[\"team_1_agent_1\", \"team_1_agent_2\", END]]:\n\
+  \    response = model.invoke(...)\n    return Command(goto=response[\"next_agent\"\
+  ])\n\ndef team_1_agent_1(state: MessagesState) -> Command[Literal[\"team_1_supervisor\"\
+  ]]:\n    response = model.invoke(...)\n    return Command(goto=\"team_1_supervisor\"\
+  , update={\"messages\": [response]})\n\ndef team_1_agent_2(state: MessagesState)\
+  \ -> Command[Literal[\"team_1_supervisor\"]]:\n    response = model.invoke(...)\n\
+  \    return Command(goto=\"team_1_supervisor\", update={\"messages\": [response]})\n\
+  \nteam_1_builder = StateGraph(Team1State)\nteam_1_builder.add_node(team_1_supervisor)\n\
+  team_1_builder.add_node(team_1_agent_1)\nteam_1_builder.add_node(team_1_agent_2)\n\
+  team_1_builder.add_edge(START, \"team_1_supervisor\")\nteam_1_graph = team_1_builder.compile()\n\
+  \n# define team 2 (same as the single supervisor example above)\nclass Team2State(MessagesState):\n\
+  \    next: Literal[\"team_2_agent_1\", \"team_2_agent_2\", \"__end__\"]\n\ndef team_2_supervisor(state:\
+  \ Team2State):\n    ...\n\ndef team_2_agent_1(state: Team2State):\n    ...\n\ndef\
+  \ team_2_agent_2(state: Team2State):\n    ...\n\nteam_2_builder = StateGraph(Team2State)\n\
+  ...\nteam_2_graph = team_2_builder.compile()\n\n\n# define top-level supervisor\n\
+  \nbuilder = StateGraph(MessagesState)\ndef top_level_supervisor(state: MessagesState)\
+  \ -> Command[Literal[\"team_1_graph\", \"team_2_graph\", END]]:\n    # you can pass\
+  \ relevant parts of the state to the LLM (e.g., state[\"messages\"])\n    # to determine\
+  \ which team to call next. a common pattern is to call the model\n    # with a structured\
+  \ output (e.g. force it to return an output with a \"next_team\" field)\n    response\
+  \ = model.invoke(...)\n    # route to one of the teams or exit based on the supervisor's\
+  \ decision\n    # if the supervisor returns \"__end__\", the graph will finish execution\n\
+  \    return Command(goto=response[\"next_team\"])\n\nbuilder = StateGraph(MessagesState)\n\
+  builder.add_node(top_level_supervisor)\nbuilder.add_node(\"team_1_graph\", team_1_graph)\n\
+  builder.add_node(\"team_2_graph\", team_2_graph)\nbuilder.add_edge(START, \"top_level_supervisor\"\
+  )\nbuilder.add_edge(\"team_1_graph\", \"top_level_supervisor\")\nbuilder.add_edge(\"\
+  team_2_graph\", \"top_level_supervisor\")\ngraph = builder.compile()\n```\n\n###\
+  \ Custom multi-agent workflow\n\nIn this architecture we add individual agents as\
+  \ graph nodes and define the order in which agents are called ahead of time, in\
+  \ a custom workflow. In LangGraph the workflow can be defined in two ways:\n\n-\
+  \ **Explicit control flow (normal edges)**: LangGraph allows you to explicitly define\
+  \ the control flow of your application (i.e. the sequence of how agents communicate)\
+  \ explicitly, via [normal graph edges](./low_level.md#normal-edges). This is the\
+  \ most deterministic variant of this architecture above \u2014 we always know which\
+  \ agent will be called next ahead of time.\n\n- **Dynamic control flow (Command)**:\
+  \ in LangGraph you can allow LLMs to decide parts of your application control flow.\
+  \ This can be achieved by using [`Command`](./low_level.md#command). A special case\
+  \ of this is a [supervisor tool-calling](#supervisor-tool-calling) architecture.\
+  \ In that case, the tool-calling LLM powering the supervisor agent will make decisions\
+  \ about the order in which the tools (agents) are being called.\n\n```python\nfrom\
+  \ langchain_openai import ChatOpenAI\nfrom langgraph.graph import StateGraph, MessagesState,\
+  \ START\n\nmodel = ChatOpenAI()\n\ndef agent_1(state: MessagesState):\n    response\
+  \ = model.invoke(...)\n    return {\"messages\": [response]}\n\ndef agent_2(state:\
+  \ MessagesState):\n    response = model.invoke(...)\n    return {\"messages\": [response]}\n\
+  \nbuilder = StateGraph(MessagesState)\nbuilder.add_node(agent_1)\nbuilder.add_node(agent_2)\n\
+  # define the flow explicitly\nbuilder.add_edge(START, \"agent_1\")\nbuilder.add_edge(\"\
+  agent_1\", \"agent_2\")\n```\n\n## Communication between agents\n\nThe most important\
+  \ thing when building multi-agent systems is figuring out how the agents communicate.\
+  \ There are few different considerations:\n\n- Do agents communicate via [**via\
+  \ graph state or via tool calls**](#graph-state-vs-tool-calls)?\n- What if two agents\
+  \ have [**different state schemas**](#different-state-schemas)?\n- How to communicate\
+  \ over a [**shared message list**](#shared-message-list)?\n\n### Graph state vs\
+  \ tool calls\n\nWhat is the \"payload\" that is being passed around between agents?\
+  \ In most of the architectures discussed above the agents communicate via the [graph\
+  \ state](./low_level.md#state). In the case of the [supervisor with tool-calling](#supervisor-tool-calling),\
+  \ the payloads are tool call arguments.\n\n![](./img/multi_agent/request.png)\n\n\
+  #### Graph state\n\nTo communicate via graph state, individual agents need to be\
+  \ defined as [graph nodes](./low_level.md#nodes). These can be added as functions\
+  \ or as entire [subgraphs](./low_level.md#subgraphs). At each step of the graph\
+  \ execution, agent node receives the current state of the graph, executes the agent\
+  \ code and then passes the updated state to the next nodes.\n\nTypically agent nodes\
+  \ share a single [state schema](./low_level.md#schema). However, you might want\
+  \ to design agent nodes with [different state schemas](#different-state-schemas).\n\
+  \n### Different state schemas\n\nAn agent might need to have a different state schema\
+  \ from the rest of the agents. For example, a search agent might only need to keep\
+  \ track of queries and retrieved documents. There are two ways to achieve this in\
+  \ LangGraph:\n\n- Define [subgraph](./low_level.md#subgraphs) agents with a separate\
+  \ state schema. If there are no shared state keys (channels) between the subgraph\
+  \ and the parent graph, it\u2019s important to [add input / output transformations](https://langchain-ai.github.io/langgraph/how-tos/subgraph-transform-state/)\
+  \ so that the parent graph knows how to communicate with the subgraphs.\n- Define\
+  \ agent node functions with a [private input state schema](https://langchain-ai.github.io/langgraph/how-tos/pass_private_state/)\
+  \ that is distinct from the overall graph state schema. This allows passing information\
+  \ that is only needed for executing that particular agent.\n\n### Shared message\
+  \ list\n\nThe most common way for the agents to communicate is via a shared state\
+  \ channel, typically a list of messages. This assumes that there is always at least\
+  \ a single channel (key) in the state that is shared by the agents. When communicating\
+  \ via a shared message list there is an additional consideration: should the agents\
+  \ [share the full history](#share-full-history) of their thought process or only\
+  \ [the final result](#share-final-result)?\n\n![](./img/multi_agent/response.png)\n\
+  \n#### Share full history\n\nAgents can **share the full history** of their thought\
+  \ process (i.e. \"scratchpad\") with all other agents. This \"scratchpad\" would\
+  \ typically look like a [list of messages](./low_level.md#why-use-messages). The\
+  \ benefit of sharing full thought process is that it might help other agents make\
+  \ better decisions and improve reasoning ability for the system as a whole. The\
+  \ downside is that as the number of agents and their complexity grows, the \"scratchpad\"\
+  \ will grow quickly and might require additional strategies for [memory management](./memory.md/#managing-long-conversation-history).\n\
+  \n#### Share final result\n\nAgents can have their own private \"scratchpad\" and\
+  \ only **share the final result** with the rest of the agents. This approach might\
+  \ work better for systems with many agents or agents that are more complex. In this\
+  \ case, you would need to define agents with [different state schemas](#different-state-schemas)\n\
+  \nFor agents called as tools, the supervisor determines the inputs based on the\
+  \ tool schema. Additionally, LangGraph allows [passing state](https://langchain-ai.github.io/langgraph/how-tos/pass-run-time-values-to-tools/#pass-graph-state-to-tools)\
+  \ to individual tools at runtime, so subordinate agents can access parent state,\
+  \ if needed."

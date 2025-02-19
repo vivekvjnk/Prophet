@@ -1,0 +1,342 @@
+[extract_entities]
+system = """
+Goal:
+Extract all entities of the following types: {entity_types} from the given text. For each entity, provide:
+
+Name: Capitalized entity name.
+Type: One of {entity_types}
+Description: Comprehensive description of the entity.
+After extracting entities, verify if all relevant entity types are sufficiently represented in the output. If there are gaps or inconsistencies, initiate a feedback loop to reassess the input text and refine the entity types or descriptions accordingly."""
+user = """
+Content :
+{content}
+
+{format_instructions}
+"""
+[missing_entities_prompt]
+system = """
+Objective: Analyze the completeness of entity extraction and decide whether additional entities need to be identified.
+
+Inputs:  
+- Current Extracted Entities: {extracted_entities}  
+- Content: {content}  
+- Iteration Counter: {iteration_counter} (Maximum allowed iterations: {max_iterations})  
+
+Task:  
+1. Analyze Completeness: Evaluate the alignment between the extracted entities and the given content.  
+2. Identify Gaps: Highlight any missing entities or information or issues with the extracted entities. You may include missing concepts, insufficiently represented entities, or ambiguities.
+3. Make a Decision:  
+   - Loop Required:  
+     - Set `loop_required` to True only if valid reasons (e.g., missed entities or underrepresented types) justify further extraction.  
+     - Ensure reasons provided are actionable for resolving the gaps in a single iteration.  
+   - No Loop Required:  
+     - Set `loop_required` to False if:  
+       - The current entities are complete and unambiguous.  
+       - Ambiguities exist but do not impact completeness.  
+
+Constraints:  
+- Iteration Limiter:  
+  - If Iteration Counter >= {max_iterations}, forcefully set `loop_required` to False and explain why further iteration is disallowed.  
+- Do Not Resolve Ambiguities: Focus only on assessing completeness and identifying gaps.  
+- Ensure your decision aligns strictly with valid reasons for further extraction.  
+
+Output Instructions:  
+Provide your response in the following structure:  
+- loop_required: Boolean (True or False)  
+- reasons_to_loop: List of reasons (if any).  
+- additional_comments: Optional notes to clarify the output.  
+
+{format_instructions}
+"""
+
+[extract_entities_reflection]
+system = """
+Goal:
+Identify missing entities from the content based on the evaluation analysis. Address the reasons provided while ensuring completeness and alignment with the extracted entities' context and types.
+
+Prompt for Extracting New Entities
+Goal:
+Identify missing entities from the content based on the evaluation analysis. Address the reasons provided while ensuring completeness and alignment with the extracted entities' context and types.
+
+Task:
+Analyze the reasons for potential incompleteness.
+Extract missing entities from the content that address these reasons.
+For each entity, provide:
+Name: The entity name (capitalized).
+Type: Choose from {entity_types}
+Description: A detailed explanation of the entity.
+
+Reasons for Loopback: 
+{reasons_to_loop}
+Content: 
+{content}
+
+Constraints:
+Address only the reasons listed in {reasons_to_loop}.
+Introduce new entity types only if absolutely necessary, with justification.
+
+
+{format_instructions}
+"""
+
+
+[extract_relationships]
+system = """
+Goal: Extract relationships between identified entities from the content.
+
+Inputs:
+
+Extracted Entities: 
+{extracted_entities}
+Content : 
+{content}
+Task:
+Identify pairs of entities (source_entity, target_entity) that are clearly related.
+For each relationship, provide:
+   - source_entity: Name of the source entity.
+   - target_entity: Name of the target entity.
+   - relationship_description: Brief explanation of the relationship.
+   - relationship_strength: A score (1–10) representing the strength of the relationship.
+
+Rules:
+- Only use entities from {extracted_entities_names}.
+- Avoid speculative or redundant relationships.
+- Focus on strong or explicit relationships.
+
+{format_instructions}
+"""
+
+[missing_relations_prompt]
+system="""
+Objective: 
+Validate the completeness of the extracted relationships and identify missed relationships, if any, within the iteration limit.
+
+Inputs:
+Extracted Relationships: {extracted_relationships}
+Extracted Entities: {extracted_entities_names}
+Content: {content}
+
+
+Iteration Counter: {iteration_counter} (Maximum allowed iterations: {max_iterations})
+
+Task:
+1. Validate Completeness: Analyze the extracted relationships for completeness based on the provided content and entities.
+2. Identify Missing Relationships: If relationships are missing, provide reasons for further extraction.
+3. Missed or ambiguous relationships between entities.
+4. Context or concepts in the content that are not mapped to any relationships.
+5. Relationships between entities that are underrepresented or overlooked.
+
+Make a Decision:
+- If additional relationships need extraction, set loop_back to True and provide reasons.
+- If no additional relationships are required, set loop_back to False and explain why the current relationships are complete.
+- Ensure that your decision to set loop_back aligns with the provided reasons.
+
+Rules:
+- If Iteration Counter >= {max_iterations}, forcefully set loop_back to False and explain why further iteration is disallowed.
+- Provide detailed reasons to ensure the next extraction cycle can resolve all identified inconsistencies in a single step.
+- Only use entities from {extracted_entities_names}.
+- Avoid speculative or redundant relationships.
+- Focus on strong or explicit relationships.
+Output Instructions:
+Provide your response in the following structure:
+loop_required: Boolean (True or False)
+reasons_to_loop: List of reasons (if any).
+additional_comments: Optional notes to clarify the output.
+
+{format_instructions}
+"""
+
+[extract_relations_feedback]
+system = """
+Objective: Based on the validation feedback and provided inputs, identify and extract missing relationships between entities.  
+
+Inputs:  
+- Validation Feedback: 
+{validation_reflection}  
+- Extracted Entities: 
+{extracted_entity_names}  
+- Content: 
+{content}  
+
+Task:  
+1. Analyze Feedback: Review the reasons and feedback provided in the `validation_reflection`.  
+2. Identify Missing Relationships: Using the provided content and extracted entities, identify relationships that address the gaps mentioned in the validation feedback. Focus on:  
+   - Missing connections between entities.  
+   - Relationships implied by the content but not yet captured.  
+   - Any overlooked interactions based on the feedback.  
+3. Extract Relationships: For each new relationship, provide:  
+   - Source Entity: Name of the source entity (must match `extracted_entities_names`).  
+   - Target Entity: Name of the target entity (must match `extracted_entities_names`).  
+   - Relationship Description: Explanation of why these entities are related.  
+   - Relationship Strength: An integer score (1–10) indicating the strength of the relationship.  
+
+Constraints:  
+- Focus only on addressing gaps mentioned in the `validation_reflection`.  
+- Do not modify or duplicate existing relationships.  
+- Ensure extracted relationships are actionable and directly address validation feedback.  
+
+Output Instructions:  
+{format_instructions}.  
+
+"""
+
+[graphrag_node_summarization_prompt]
+system = """You are a summarization assistant. Your task is to summarize the following node information from a graph community. 
+Each node represents an entity with type information and one or more descriptions. 
+Your summary should be concise, structured, and preserve essential details for downstream tasks.
+Ensure the output reflects the entity type, integrates key points from the descriptions, and avoids unnecessary repetition.
+Ensure that the node names in the response match exactly with the node names in the prompt, without any alterations.
+---
+Input:
+{node_descriptions}
+---
+{format_instructions}
+"""
+
+[graphrag_single_node_summarization_prompt]
+system = """You are a summarization assistant. Your task is to summarize the following node information from a graph. 
+The node represents an entity with type information and one or more descriptions.
+Your summary should be concise, structured, and preserve essential details for downstream tasks.
+Ensure the output reflects the entity type, integrates key points from the descriptions, and avoids unnecessary repetition.
+If node information is missing in the prompt, clearly mention in the summary that "No relevant information is available from the source."
+Ensure that the node names in the response match exactly with the node names in the prompt, without any alterations.
+---
+Input:
+{node_descriptions}
+---
+{format_instructions}
+"""
+
+[graphrag_internal_edge_summarization_prompt]
+system = """
+You are a summarization assistant. Your task is to analyze the internal relationships within a graph community and generate a concise summary of their significance. The graph contains nodes and edges. Nodes represent entities with summarized descriptions, and internal edges represent relationships within the community. Use the node summaries below to contextualize these internal relationships.
+If any node information is missing in the prompt, clearly mention in the summary that "No relevant information is available from the source."
+
+---
+Node Summaries:
+{node_summary}
+
+Internal Edge Information:
+{internal_edge_descriptions}
+---
+
+Generate a summary that explains:
+1. The significance of internal relationships within the community.
+2. Patterns or key concepts emerging from these relationships.
+3. Insights about how the internal structure contributes to the community's meaning.
+---
+{format_instructions}
+"""
+
+[graphrag_external_edge_summarization_prompt]
+system = """
+You are a summarization assistant. Your task is to analyze the external relationships of a graph community and generate a concise summary of their significance. External edges represent connections between this community and entities outside of it. Use the node summaries below to contextualize these relationships.
+---
+Node Summaries:
+{node_summary}
+
+External Edge Information:
+{external_edge_descriptions}
+---
+Generate a summary that explains:
+1. The role of external relationships in connecting this community to other entities or concepts.
+2. Patterns or key interactions observed in these connections.
+3. Insights about how the community extends its influence or meaning through external relationships.
+---
+{format_instructions}
+"""
+
+
+
+[graphrag_community_summarization_prompt]
+system = """
+# Goal
+Write a comprehensive report of a community, given a list of entities that belong to the community as well as their relationships. The report will be used to inform decision-makers about information associated with the community and their potential impact. The content of this report includes an overview of the community's key entities, their relevance in the community, technical capabilities, their intricate relationships leading to possible emergent behaviors, and thier correlations describing overall community structure and purpose.
+---
+Node Summaries:
+{node_info}
+
+Internal Edge Descriptions:
+{internal_edge_info}
+
+External Edge Descriptions:
+{external_edge_info}
+---
+
+Write a high-level summary of the community, structured as follows:
+- Title : Community's name that represents its key entities - title should be short but specific. When possible, include representative named entities in the title.
+- Key Highlights: One or two sentences about the community's purpose.
+- Summary : An executive summary of the community's overall structure, how its entities are related to each other, and significant information associated with its entities.
+- Detailed Findings: A list of 5-10 key insights about the community. Each insight should have a short summary followed by detailed explanatory section. Do not include information where the supporting evidence for it is not provided.
+- Impact Severity Rating: a float score between 0-10 that represents the severity of IMPACT posed by entities within the community.  IMPACT is the scored importance of a community.
+- Rating Explanation: Give a single sentence explanation of the IMPACT severity rating.
+
+---
+{format_instructions}
+"""
+
+[graphrag_community_key_highlights_summary]
+system= """
+You are an expert summarizer tasked with creating a concise and insightful summary of the key highlights of a community. The input consists of key highlights from several sub-communities, and your goal is to merge these into a coherent summary for the entire community. Ensure that the final summary:
+- Captures the essence,main themes and purposes of all sub-community highlights.
+- Information rich and limited to {token_limit} tokens or fewer. Be as elaborate as possible within token limits
+---
+Community Highlights:
+{highlights_list}
+---
+{format_instructions}
+"""
+
+[graphrag_sub_community_summary]
+system= """
+You are an expert summarizer tasked with creating a concise and insightful summary of community. The input consists of summaries from several sub-communities, and your goal is to merge these into a coherent summary for the entire community. Ensure that the final summary:
+- Captures the essence,main themes and purposes of all sub-community summaries.
+- Information rich and limited to {token_limit} tokens or fewer. Be as elaborate as possible within token limits
+---
+Sub-Community Summaries:
+{summary_list}
+---
+{format_instructions}
+"""
+
+[graphrag_findings_consolidation]
+system= """
+# Goal 
+Consolidate elaborate findings extracted from a knowledge graph. 
+The input consists of findings from several sub-communities, and your goal is to consolidate these findings for the entire community. Ensure that the final findings:
+- Captures the essence,main themes and purposes of all sub-community findings.
+- Information rich and strictly limited to {token_limit} tokens or fewer. 
+---
+Detailed findings:
+{findings}
+---
+{format_instructions}
+"""
+[graphrag_impact_severity_rating]
+system="""
+You are an expert in evaluating the importance and impact of communities in a given system. Based on the provided information, assign an Impact Severity Rating and provide a clear Rating Explanation. Consider the information carefully to determine the overall impact and importance of this community.
+Task:
+- Assign an Impact Severity Rating (a float score between 0 and 10) that represents the severity of the IMPACT posed by entities within the community.
+- Provide a Rating Explanation (a single sentence) to justify the assigned score. The explanation must succinctly describe why the community has the assigned impact severity rating.
+---
+Provided Information:
+
+Key Highlights:
+{highlights}
+
+Summary:
+{summary}
+
+Detailed Findings:
+{findings}
+---
+Guidelines:
+- The rating should reflect the criticality, relevance, and influence of the entities and relationships described in the community.
+- Consider the key highlights, summary, and detailed findings to assess the importance of the community.
+- Be objective and precise in your evaluation.
+- Provide only one Impact Severity Rating and one Rating Explanation.
+- Strictly follow the specified output format instructions and respond within {token_limit} number of tokens
+
+
+{format_instructions}
+"""

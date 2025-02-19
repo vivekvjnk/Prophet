@@ -1,0 +1,1170 @@
+directed: false
+multigraph: false
+graph: {}
+nodes:
+- type: COMPONENTS
+  description: A component representing an AI-generated message that can be added
+    to the conversation state.
+  id: AIMESSAGE
+- type: COMPONENTS
+  description: A component of procedural memory in AI agents that contributes to determining
+    the agent's functionality.
+  id: AGENT CODE
+- type: COMPONENTS
+  description: A component of procedural memory in AI agents that contributes to determining
+    the agent's functionality.
+  id: AGENT'S PROMPT
+- type: PROCESSES
+  description: A process where few-shot examples are used to align large language
+    models (LLMs) with human preferences.
+  id: ALIGNING LLMS TO HUMAN PREFERENCES
+- type: PROCESSES
+  description: The sequence of steps or procedures that an AI agent follows to accomplish
+    a task. In the context of long-term memory, application logic determines when
+    and how memories are updated based on user interactions.
+  id: APPLICATION LOGIC
+- type: PROCESSES
+  description: A process that runs in the background without immediate user interaction.
+    It can be used to update memories asynchronously, allowing for more efficient
+    management of information storage and retrieval.
+  id: BACKGROUND TASK
+- type: TECHNOLOGIES AND FRAMEWORKS
+  description: An abstract storage interface or class that provides methods for interacting
+    with the memory store.
+  id: BASESTORE
+- type: ENTITIES (REAL-WORLD OBJECTS)
+  description: Software applications designed for real-time text-based communication
+    between users.
+  id: CHAT APPLICATIONS
+- type: CONCEPTS
+  description: A general term referring to models designed for conversational interactions,
+    capable of understanding and generating human-like text based on input.
+  id: CHAT MODELS
+- type: TECHNOLOGIES AND FRAMEWORKS
+  description: A specific implementation or class from the LangChain framework that
+    interfaces with OpenAI's chat models, such as GPT-4.
+  id: CHATOPENAI
+- type: TECHNOLOGIES AND FRAMEWORKS
+  description: Used to persist the state of a thread in a database, allowing it to
+    be resumed at any time.
+  id: CHECKPOINT
+- type: TECHNOLOGIES AND FRAMEWORKS
+  description: Tools or mechanisms used to filter and retrieve data based on specific
+    criteria. In the context of LangGraph's memory system, content filters enable
+    cross-namespace searching by applying conditions to stored memories.
+  id: CONTENT FILTERS
+- type: CONCEPTS
+  description: The maximum amount of text that an LLM can process at one time. Exceeding
+    this limit can lead to errors or loss of information.
+  id: CONTEXT WINDOW
+- type: CONCEPTS
+  description: Limited memory space within a chat application that stores recent messages
+    for reference during ongoing conversations.
+  id: CONTEXT WINDOWS
+- type: CONCEPTS
+  description: The record of past interactions within a conversation, which can include
+    user inputs, system responses, and any other relevant data exchanged during the
+    dialogue.
+  id: CONVERSATION HISTORY
+- type: PROCESSES
+  description: A process that deletes all but the two most recent messages from a
+    list of messages.
+  id: DELETEMESSAGES
+- type: PROCESSES
+  description: A method of managing memories by storing them as individual documents
+    that are updated over time, allowing for more granular control and easier recall.
+  id: DOCUMENT COLLECTION
+- type: PROCESSES
+  description: A process where LangSmith retrieves examples most relevant to user
+    input based on keyword similarity using a BM25-like algorithm.
+  id: DYNAMIC FEW-SHOT EXAMPLE SELECTION
+- type: PROCESSES
+  description: Tools or methods used to select the most relevant examples based on
+    user input when implementing few-shot learning. These selectors help in achieving
+    better performance and relevance in AI tasks.
+  id: DYNAMIC FEW-SHOT EXAMPLE SELECTORS
+- type: PROCESSES
+  description: The process of trimming and filtering message lists before passing
+    them to an LLM. This helps in maintaining the context within the model's capacity
+    while improving performance metrics like latency and cost.
+  id: EDITING MESSAGE LISTS
+- type: PROCESSES
+  description: A process or function responsible for converting textual information
+    into numerical vectors, often used for tasks like similarity search, clustering,
+    or classification in natural language processing applications.
+  id: EMBEDDING FUNCTION
+- type: CONCEPTS
+  description: A type of memory that involves the retention of specific experiences.
+    In humans, it includes memories of events and personal experiences. For AI agents,
+    episodic memory can be used to remember past actions or events. ; The memory system
+    that involves recalling specific experiences, such as the first time successfully
+    riding a bike without training wheels or a memorable bike ride through a scenic
+    route. ; A type of memory that involves recalling past events or actions. In the
+    context of AI agents, episodic memory is used to help remember how to accomplish
+    tasks, often implemented through few-shot example prompting.
+  id: EPISODIC MEMORY
+- type: DATATYPES
+  description: Personal events or occurrences that have been perceived by an individual
+    and stored in their memory. These memories often include sensory details and emotions
+    associated with the event.
+  id: EXPERIENCES
+- type: DATATYPES
+  description: Information that is verifiable and objective, such as dates, statistics,
+    or established truths. In the context of long-term memory, facts are specific
+    pieces of knowledge that can be recalled and used to accomplish tasks.
+  id: FACTS
+- type: PROCESSES
+  description: A method where agents learn from past sequences to perform tasks correctly
+    by using examples. This approach allows LLMs to learn well from "showing" rather
+    than just "telling."
+  id: FEW-SHOT EXAMPLE PROMPTING
+- type: PROCESSES
+  description: An approach to improving tool calling performance by using few-shot
+    examples.
+  id: FEW-SHOT PROMPTING
+- type: TECHNOLOGIES AND FRAMEWORKS
+  description: A method of searching through data by specifying criteria that the
+    content must meet, allowing for precise retrieval of information.
+  id: FILTERING BY CONTENT
+- type: COMPONENTS
+  description: A component used to store conversation history and other stateful data
+    within a graph structure. It allows the bot to access the full context of a conversation
+    while keeping different threads separate.
+  id: GRAPH'S STATE
+- type: CONCEPTS
+  description: The primary or most frequently executed path within an application's
+    logic. In long-term memory management, updating memories on the hot path means
+    that decisions about remembering facts are made before responding to a user.
+  id: HOT PATH
+- type: INPUTS AND OUTPUTS
+  description: Text or data entered by human users into the chat application for processing
+    or response generation.
+  id: HUMAN INPUTS
+- type: DATATYPES
+  description: Represents a message sent by a human user in a conversation. This data
+    type is typically used as an endpoint for chat history in many chatbot systems.
+    ; A data type representing a message sent by a human in a conversation history.
+    ; A data type representing a message from a human user in the conversation.
+  id: HUMANMESSAGE
+- type: TECHNOLOGIES AND FRAMEWORKS
+  description: A specific implementation of a memory store that saves data to an in-memory
+    dictionary. This is suitable for development and testing but not recommended for
+    production use due to its lack of persistence.
+  id: INMEMORYSTORE
+- type: CONCEPTS
+  description: The phenomenon where data or information is unintentionally discarded
+    or becomes inaccessible over time. In the context of document collections, this
+    refers to the potential for losing important details as documents are updated
+    or extended.
+  id: INFORMATION LOSS
+- type: DATATYPES
+  description: A lightweight data interchange format that is easy for humans to read
+    and write, and easy for machines to parse and generate. LangGraph uses JSON to
+    store long-term memories in a structured manner.
+  id: JSON DOCUMENTS
+- type: TECHNOLOGIES AND FRAMEWORKS
+  description: A format for describing changes to a JSON document in a structured
+    way, allowing for partial updates.
+  id: JSON PATCH
+- type: TECHNOLOGIES AND FRAMEWORKS
+  description: A vocabulary that allows you to annotate and validate JSON documents.
+    It defines the structure, types, and constraints of the data, ensuring consistency
+    and correctness. ; A specification language used to describe the structure and
+    constraints of data, ensuring consistency and validity in data exchange formats
+    like YAML or JSON.
+  id: JSON SCHEMA
+- type: TECHNOLOGIES AND FRAMEWORKS
+  description: Advanced machine learning models designed to understand, generate,
+    and manipulate human language. They are used in various applications such as chatbots,
+    content generation, and translation.
+  id: LLMS (LARGE LANGUAGE MODELS)
+- type: TECHNOLOGIES AND FRAMEWORKS
+  description: A technology framework used for building language models and managing
+    conversations, including components like AIMessage and processes like add_messages.
+    ; A technology framework used for building applications with large language models
+    (LLMs).
+  id: LANGCHAIN
+- type: TECHNOLOGIES AND FRAMEWORKS
+  description: A hypothetical framework or system used for managing state and updates
+    within a chat application, allowing developers to define custom behaviors for
+    handling message lists. ; A graph-based framework that extends the functionality
+    of LangChain, providing additional tools for managing conversation states and
+    messages.
+  id: LANGGRAPH
+- type: TECHNOLOGIES AND FRAMEWORKS
+  description: A memory storage solution used in the implementation of the method,
+    allowing the agent to save and retrieve prompts.
+  id: LANGGRAPH MEMORY STORE
+- type: TECHNOLOGIES AND FRAMEWORKS
+  description: A tool that indexes datasets and enables retrieval of few-shot examples
+    based on keyword similarity using a BM25-like algorithm. ; A platform or tool
+    used for evaluating and tuning the behavior of language models, helping to optimize
+    their performance and accuracy.
+  id: LANGSMITH
+- type: TECHNOLOGIES AND FRAMEWORKS
+  description: A tool provided by LangSmith that allows developers to store data and
+    use dynamic few-shot example selectors to achieve specific goals, such as tying
+    few-shots more closely to evaluation harnesses.
+  id: LANGSMITH DATASET
+- type: TECHNOLOGIES AND FRAMEWORKS
+  description: A caching algorithm that removes the least recently accessed items
+    first when the cache reaches its capacity, similar to how old messages are managed
+    in chat applications.
+  id: LEAST-RECENTLY USED CACHE
+- type: COMPONENTS
+  description: Shared across conversational threads and can be recalled at any time
+    and in any thread. Memories are scoped to any custom namespace.
+  id: LONG-TERM MEMORY
+- type: PROCESSES
+  description: A custom function defined in LangGraph that handles updates to the
+    "my_list" entity, allowing developers to define how old messages are removed from
+    the chat history.
+  id: MANAGE_LIST FUNCTION
+- type: CONFIGURATION AND PARAMETERS
+  description: A configuration parameter that specifies the maximum number of tokens
+    to keep from the list of messages when trimming.
+  id: MAXTOKENS
+- type: CONCEPTS
+  description: A cognitive function that allows people to store, retrieve, and use
+    information to understand their present and future.
+  id: MEMORY
+- type: PROCESSES
+  description: The process of organizing, storing, retrieving, and updating information
+    in long-term memory. It involves deciding what to remember, how to store it, and
+    when to update or retrieve it based on various criteria.
+  id: MEMORY MANAGEMENT
+- type: CONCEPTS
+  description: The structure or rules that define how memory data is organized and
+    validated within a system.
+  id: MEMORY SCHEMAS
+- type: PROCESSES
+  description: The process of retrieving specific memories from a collection based
+    on certain criteria or queries.
+  id: MEMORY SEARCH
+- type: CONCEPTS
+  description: Different categories of memory tailored to various application requirements.
+    These types include semantic memory (facts), episodic memory (experiences), and
+    procedural memory (rules).
+  id: MEMORY TYPES
+- type: COMPONENTS
+  description: Collections of messages exchanged during a conversation, which can
+    be edited or summarized to manage short-term memory effectively.
+  id: MESSAGE LISTS
+- type: DATATYPES, CONCEPTS
+  description: A data type that represents a collection of messages, typically in
+    a conversation history context. ; The format in which chat models receive input,
+    consisting of developer-provided instructions (system messages) and user inputs
+    (human messages). ; A list of messages that can be added or removed from the conversation
+    state. ; Units of information exchanged in a chat application, typically consisting
+    of text or multimedia content.
+  id: MESSAGES
+- type: COMPONENTS
+  description: A component in LangGraph used for managing messages within the graph
+    state, which can be extended to include a `summary` key.
+  id: MESSAGESSTATE
+- type: OUTPUTS AND INPUTS
+  description: Automated replies generated by a machine learning model in response
+    to user inputs in a chat application.
+  id: MODEL RESPONSES
+- type: COMPONENTS
+  description: A component of procedural memory in AI agents that contributes to determining
+    the agent's functionality.
+  id: MODEL WEIGHTS
+- type: PROCESSES
+  description: A specific implementation within LangGraph that returns an update for
+    the "my_list" entity, instructing the system to retain only a portion of the message
+    list and delete the rest.
+  id: MY_NODE FUNCTION
+- type: COMPONENTS
+  description: A hierarchical structure used to organize and categorize data within
+    a storage system. It helps in managing and retrieving specific items by providing
+    a unique context for each piece of information.
+  id: NAMESPACE
+- type: TECHNOLOGIES AND FRAMEWORKS
+  description: Custom organizational units within a memory system, similar to folders
+    in a file structure. Each namespace can contain distinct keys (like filenames)
+    for storing memories, enabling hierarchical organization and cross-namespace searching.
+  id: NAMESPACES
+- type: CONCEPTS, PROCESSES
+  description: A phenomenon in memory management where models tend to add more information
+    than necessary, leading to potential redundancy and inefficiency in managing memory.
+    ; A situation in memory management where too many new items are added to a collection
+    without proper consideration. This can lead to inefficiencies and increased complexity
+    in managing the memory, potentially causing issues like information overload or
+    redundancy.
+  id: OVER-INSERTION
+- type: CONCEPTS, PROCESSES
+  description: A phenomenon in memory management where models frequently update existing
+    information, which can lead to inconsistencies and increased complexity in maintaining
+    accurate memory states. ; A scenario where existing items in a memory collection
+    are frequently updated without careful management. This can result in unnecessary
+    changes, increased computational overhead, and potential data inconsistencies
+    if not properly controlled.
+  id: OVER-UPDATING
+- type: DATATYPES
+  description: A data type representing an individual player with properties for name
+    and batting average.
+  id: PLAYER
+- type: CONCEPTS
+  description: A concept representing a list of players, each with a name and batting
+    average.
+  id: PLAYERS
+- type: CONCEPTS
+  description: Metrics used to evaluate the performance of a system, particularly
+    in information retrieval tasks. Precision measures the accuracy of positive predictions,
+    while recall measures the ability to find all relevant instances.
+  id: PRECISION & RECALL
+- type: CONCEPTS
+  description: A type of memory that involves the retention of instructions or motor
+    skills. In humans, it includes instincts or learned behaviors. For AI agents,
+    procedural memory can be used to store system prompts or instructions. ; The memory
+    system in both humans and AI agents that involves remembering the rules used to
+    perform tasks. In humans, it includes internalized knowledge like riding a bike,
+    while in AI agents, it comprises model weights, agent code, and prompts.
+  id: PROCEDURAL MEMORY
+- type: DATATYPES, COMPONENTS
+  description: A JSON document with various key-value pairs representing information
+    about a user, organization, or other entity. Profiles are used in semantic memory
+    management to continuously update and store specific information. ; A data structure
+    that holds information about a user or system, which can be updated over time.
+  id: PROFILE
+- type: PROCESSES
+  description: A function in LangGraph that processes updates to the state of an entity
+    (in this case, "my_list") and determines how to apply those updates to the existing
+    data.
+  id: REDUCER FUNCTION
+- type: PROCESSES
+  description: An approach to refining an agent's instructions by prompting the agent
+    with its current instructions and recent conversations or explicit user feedback,
+    allowing the agent to refine its own instructions.
+  id: REFLECTION (META-PROMPTING)
+- type: COMPONENTS
+  description: A component used to specify which messages should be deleted from the
+    conversation state by their IDs. ; A component or function used to remove a specific
+    message identified by its ID.
+  id: REMOVEMESSAGE
+- type: ENTITIES (REAL-WORLD OBJECTS)
+  description: An object representing the response content from a language model or
+    API call.
+  id: RESPONSE
+- type: DATATYPES
+  description: Guidelines or principles that govern behavior or decision-making processes.
+    In long-term memory, rules are procedural memories that help individuals or AI
+    agents perform tasks efficiently based on past experiences.
+  id: RULES
+- type: CONCEPTS
+  description: A blueprint or template that defines the structure and rules for organizing
+    data, ensuring consistency and validity.
+  id: SCHEMA
+- type: CONCEPTS
+  description: A type of memory that stores factual information, which can be used
+    by AI agents to ground their responses and provide personalized interactions.
+    ; A type of memory that involves the retention of specific facts and concepts.
+    In humans, it includes information learned in school and understanding of concepts
+    and their relationships. For AI agents, semantic memory is used to personalize
+    applications by remembering facts or concepts from past interactions.
+  id: SEMANTIC MEMORY
+- type: TECHNOLOGIES AND FRAMEWORKS
+  description: A search technique that uses natural language processing to understand
+    the meaning behind words and phrases, enabling more relevant results.
+  id: SEMANTIC SEARCH
+- type: COMPONENTS
+  description: Lets your application remember previous interactions within a single
+    thread or conversation. Managed as part of the agent's state, persisted via thread-scoped
+    checkpoints.
+  id: SHORT-TERM MEMORY
+- type: DATATYPES, CONFIGURATION AND PARAMETERS, COMPONENTS
+  description: An extension of MessagesState that includes an additional attribute
+    `summary` to store the summary of the conversation. ; Managed by LangGraph and
+    persisted to a database using a checkpointer so the thread can be resumed at any
+    time. Updated when the graph is invoked or a step is completed, and read at the
+    start of each step. ; A configuration parameter or variable that holds the current
+    state, including a list of messages. ; A data structure representing the current
+    state of the conversation, including a list of messages that can be modified using
+    processes like add_messages. ; A data structure used to maintain the state of
+    the agent, including messages from conversations with users.
+  id: STATE
+- type: CONCEPTS
+  description: The process of maintaining and updating the internal state of a chat
+    application, including message lists and other relevant data structures.
+  id: STATE MANAGEMENT
+- type: CONCEPTS
+  description: Information that persists across multiple interactions or sessions,
+    such as uploaded files, retrieved documents, or generated artifacts. This data
+    helps maintain context and continuity in conversations.
+  id: STATEFUL DATA
+- type: TECHNOLOGIES AND FRAMEWORKS, COMPONENTS
+  description: A component within a system responsible for managing the storage and
+    retrieval of memory data, supporting various search and filtering operations.
+    ; A component or service responsible for storing and managing data. In the given
+    text, it is used to put, get, and search for memories within a specified namespace.
+    ; Provided by LangGraph to let you save and recall long-term memories. Scoped
+    to any custom namespace.
+  id: STORE
+- type: TECHNOLOGIES AND FRAMEWORKS, COMPONENTS
+  description: A component used for storing data, such as few-shot examples. The memory
+    store is one way to manage and access stored information in AI systems. ; A component
+    responsible for persisting memory data within the system. In LangGraph, this is
+    implemented using various storage solutions, such as an in-memory dictionary or
+    database-backed stores, to ensure data durability and accessibility.
+  id: STORE (MEMORY STORE)
+- type: CONFIGURATION AND PARAMETERS
+  description: A configuration parameter that defines the strategy used for handling
+    the boundary when trimming messages, such as keeping the last `max_tokens`.
+  id: STRATEGY
+- type: TECHNOLOGIES AND FRAMEWORKS
+  description: A method used in memory management where decoding is performed strictly
+    to ensure that the memory schemas remain valid, preventing errors as profiles
+    grow larger.
+  id: STRICT DECODING
+- type: PROCESSES
+  description: A process that involves generating a summary of chat history using
+    a chat model to avoid losing information from the message queue. ; A technique
+    used to condense long conversation histories into shorter summaries, making it
+    easier for the LLM to process and understand the context without overwhelming
+    it with excessive data.
+  id: SUMMARIZING PAST CONVERSATIONS
+- type: DATATYPES
+  description: A special type of message that contains instructions or configurations
+    for the chat model. It is usually retained across conversations to provide consistent
+    behavior and context. ; A data type representing a system-generated message in
+    a conversation history, often used to set the context or rules for the conversation.
+  id: SYSTEMMESSAGE
+- type: ENTITIES (REAL-WORLD OBJECTS)
+  description: Organizes multiple interactions in a session, similar to the way email
+    groups messages in a single conversation.
+  id: THREAD
+- type: CONSTRAINTS AND REQUIREMENT
+  description: A constraint or requirement that limits the number of tokens in a message
+    history to avoid exceeding the maximum supported context window of LLMs.
+  id: TOKEN COUNT
+- type: CONCEPTS
+  description: Collections of messages containing a large number of tokens (units
+    of text), which can be resource-intensive to process and store.
+  id: TOKEN-RICH MESSAGE LISTS
+- type: DATATYPES
+  description: Represents a message generated by a tool or system, often used to convey
+    information or actions taken within the context of a conversation.
+  id: TOOLMESSAGE
+- type: COMPONENTS
+  description: A component or utility function provided by LangChain for trimming
+    messages based on token count and other strategies.
+  id: TRIMMESSAGES
+- type: TECHNOLOGIES AND FRAMEWORKS
+  description: A tool or library designed to manage memory updates and prevent issues
+    such as over-insertion or over-updating in document collections.
+  id: TRUSTCALL PACKAGE
+- type: TECHNOLOGIES AND FRAMEWORKS
+  description: A system built using external feedback and prompt re-writing to produce
+    high-quality paper summaries for Twitter.
+  id: TWEET GENERATOR
+- type: DATATYPES
+  description: A structured format used to specify changes to be made to an entity's
+    state, such as retaining specific portions of a list or deleting others.
+  id: UPDATE OBJECT OR DICTIONARY
+- type: DATATYPES
+  description: Information about an individual's likes, dislikes, and communication
+    style. In the context of long-term memory, user preferences can influence how
+    memories are stored and retrieved to provide personalized interactions.
+  id: USER PREFERENCES
+- type: TECHNOLOGIES AND FRAMEWORKS
+  description: A human-readable data serialization language that is commonly used
+    for configuration files and data exchange. It is structured in a way that is easy
+    to read and write. ; A human-readable data serialization language commonly used
+    for configuration files and data exchange between systems.
+  id: YAML
+- type: PROCESSES
+  description: A process or function used to manage messages in the conversation state,
+    allowing for adding new messages and handling RemoveMessage components to delete
+    specific messages.
+  id: ADD_MESSAGES
+- type: CONCEPTS
+  description: A conceptual grouping within the memory store where agent-specific
+    instructions are stored.
+  id: AGENT_INSTRUCTIONS NAMESPACE
+- type: PROCESSES
+  description: A process that retrieves an updated prompt from the memory store and
+    uses it to generate a response.
+  id: CALL_MODEL FUNCTION
+- type: CONFIGURATION AND PARAMETERS
+  description: A configuration parameter in a chat system that specifies when the
+    conversation should be considered complete, based on the types of messages received
+    (e.g., HumanMessage or ToolMessage).
+  id: END_ON
+- type: DATATYPES
+  description: A data type representing a common daily habit.
+  id: HABIT
+- type: CONFIGURATION AND PARAMETERS
+  description: A boolean configuration parameter indicating whether SystemMessages
+    should be included in the retained history of conversations. This is typically
+    set to True to maintain model-specific instructions.
+  id: INCLUDE_SYSTEM
+- type: CONCEPTS
+  description: A conceptual grouping within the memory store where general instructions
+    or prompts are stored.
+  id: INSTRUCTIONS NAMESPACE
+- type: PROCESSES
+  description: A process or method used to invoke a language model, likely generating
+    new instructions based on the provided prompt.
+  id: LLM.INVOKE
+- type: TECHNOLOGIES AND FRAMEWORKS
+  description: A method or function used to invoke a chat model with a given set of
+    messages.
+  id: MODEL.INVOKE
+- type: PROCESSES
+  description: A process or function that adds an AI message to the `messages` list
+    in the conversation state.
+  id: MY_NODE_1
+- type: PROCESSES
+  description: A process or function that deletes all but the last two messages from
+    the `messages` list in the conversation state by creating RemoveMessage components
+    for each message to be deleted.
+  id: MY_NODE_2
+- type: DATATYPES
+  description: The updated set of instructions generated by the language model based
+    on user feedback and conversation history.
+  id: NEW_INSTRUCTIONS
+- type: DATATYPES
+  description: A template used to format prompts based on instructions and conversation
+    history.
+  id: PROMPT_TEMPLATE
+- type: PROCESSES
+  description: A process or function that generates a summary of the chat history,
+    using any existing summary as context for the next summary.
+  id: SUMMARIZE_CONVERSATION
+- type: DATATYPES
+  description: A data type representing an environmentally friendly alternative to
+    a given habit.
+  id: SUSTAINABLE_ALTERNATIVE
+- type: COMPONENTS
+  description: A component responsible for retrieving the current prompt, incorporating
+    feedback from user interactions, updating the prompt, and saving it back to the
+    store.
+  id: UPDATE_INSTRUCTIONS NODE
+- id: FEW-SHOT EXAMPLES
+- id: PAST AGENT ACTIONS
+- id: TOOL CALLING PERFORMANCE
+- id: EVALUATION
+- id: AGENT SYSTEM PROMPT
+- id: MEMORY UPDATING
+links:
+- weight: 8.0
+  description: The `AIMessage` component can be added to the conversation state using
+    the `add_messages` process.
+  source: AIMESSAGE
+  target: ADD_MESSAGES
+- weight: 7.5
+  description: LangGraph extends the functionality of LangChain, including support
+    for components like `AIMessage`.
+  source: AIMESSAGE
+  target: LANGGRAPH
+- weight: 8.0
+  description: Agent code is a component of procedural memory in AI agents.
+  source: AGENT CODE
+  target: PROCEDURAL MEMORY
+- weight: 7.0
+  description: Agents can refine their instructions, including their code, through
+    reflection or meta-prompting.
+  source: AGENT CODE
+  target: REFLECTION (META-PROMPTING)
+- weight: 8.0
+  description: The agent's prompt is a component of procedural memory in AI agents.
+  source: AGENT'S PROMPT
+  target: PROCEDURAL MEMORY
+- weight: 9.0
+  description: Few-shot examples are used to align large language models with human
+    preferences.
+  source: ALIGNING LLMS TO HUMAN PREFERENCES
+  target: FEW-SHOT EXAMPLES
+- weight: 9.0
+  description: The content suggests a connection between few-shot prompting and aligning
+    LLMs to human preferences through the use of few-shot examples, which should be
+    highlighted.
+  source: ALIGNING LLMS TO HUMAN PREFERENCES
+  target: FEW-SHOT PROMPTING
+- weight: 30.0
+  description: Application logic determines when to update memories, including decisions
+    made on the hot path before responding to a user. ; Application logic determines
+    when to update memories specifically on the hot path. This relationship needs
+    more detail to explain how application logic influences memory updates on the
+    hot path. ; The application logic influences memory updates on the hot path by
+    determining when and how memories are updated in real-time to optimize performance.
+    ; Application logic influences memory updates on the hot path by determining when
+    and how memories are updated in real-time to optimize performance.
+  source: APPLICATION LOGIC
+  target: HOT PATH
+- weight: 6.0
+  description: Background tasks can run asynchronously and generate memories as part
+    of memory management processes.
+  source: BACKGROUND TASK
+  target: MEMORY MANAGEMENT
+- weight: 8.0
+  description: Chat applications use context windows to manage the limited memory
+    space that stores recent messages for reference during ongoing conversations.
+  source: CHAT APPLICATIONS
+  target: CONTEXT WINDOWS
+- weight: 10.0
+  description: Chat applications generate and store messages as part of their core
+    functionality.
+  source: CHAT APPLICATIONS
+  target: MESSAGES
+- weight: 8.0
+  description: LangGraph is a framework or tool that can be integrated into chat applications
+    to manage and process messages, including human inputs and model responses.
+  source: CHAT APPLICATIONS
+  target: LANGGRAPH
+- weight: 8.0
+  description: Effective state management is crucial in chat applications to keep
+    track of messages, user inputs, and model responses.
+  source: CHAT APPLICATIONS
+  target: STATE MANAGEMENT
+- weight: 7.0
+  description: Token-rich message lists can be resource-intensive and are a concern
+    in chat applications due to their impact on performance.
+  source: CHAT APPLICATIONS
+  target: TOKEN-RICH MESSAGE LISTS
+- weight: 8.0
+  description: Chat models expect conversations to end with a HumanMessage.
+  source: CHAT MODELS
+  target: HUMANMESSAGE
+- weight: 7.0
+  description: Chat models typically retain SystemMessages for special instructions.
+  source: CHAT MODELS
+  target: SYSTEMMESSAGE
+- weight: 8.0
+  description: Chat models also expect conversations to end with a ToolMessage.
+  source: CHAT MODELS
+  target: TOOLMESSAGE
+- weight: 7.0
+  description: ChatOpenAI processes and generates responses based on the input messages.
+  source: CHATOPENAI
+  target: MESSAGES
+- weight: 9.0
+  description: Most LLMs have a maximum supported context window in tokens, which
+    is defined by the 'ChatOpenAI' model.
+  source: CHATOPENAI
+  target: TOKEN COUNT
+- weight: 8.5
+  description: The state of a thread is persisted to a database using a checkpointer,
+    allowing the thread to be resumed at any time.
+  source: CHECKPOINT
+  target: STATE
+- weight: 8.0
+  description: Content filters can be used to search through JSON documents stored
+    in long-term memory.
+  source: CONTENT FILTERS
+  target: JSON DOCUMENTS
+- weight: 9.0
+  description: Content filters support searching through namespaces in long-term memory.
+  source: CONTENT FILTERS
+  target: NAMESPACES
+- weight: 17.0
+  description: Large language models accept context within a specific window size,
+    which can be influenced by the conversation history and message lists. ; The performance
+    of LLMs in handling long conversations is significantly affected by the size of
+    the context window, which determines how much conversation history can be processed
+    at once.
+  source: CONTEXT WINDOW
+  target: LLMS (LARGE LANGUAGE MODELS)
+- weight: 6.0
+  description: The least-recently used cache is a strategy often employed in context
+    windows to manage the storage of messages efficiently.
+  source: CONTEXT WINDOWS
+  target: LEAST-RECENTLY USED CACHE
+- weight: 9.0
+  description: The conversation history is stored within the graph's state, allowing
+    the bot to access full context while maintaining separation between different
+    threads.
+  source: CONVERSATION HISTORY
+  target: GRAPH'S STATE
+- weight: 7.0
+  description: Long-term memory involves techniques for managing conversation history
+    over extended periods.
+  source: CONVERSATION HISTORY
+  target: LONG-TERM MEMORY
+- weight: 8.0
+  description: The process of deleting messages involves using the RemoveMessage component.
+  source: DELETEMESSAGES
+  target: REMOVEMESSAGE
+- weight: 6.0
+  description: The DeleteMessages process returns a response containing a summary
+    and the modified list of messages.
+  source: DELETEMESSAGES
+  target: RESPONSE
+- weight: 7.0
+  description: The DeleteMessages process modifies the state by removing messages
+    from it.
+  source: DELETEMESSAGES
+  target: STATE
+- weight: 8.0
+  description: The 'DeleteMessages' function uses 'TrimMessages' to manage message
+    lists based on token count.
+  source: DELETEMESSAGES
+  target: TRIMMESSAGES
+- weight: 8.0
+  description: A document collection can lead to higher recall downstream, which requires
+    managing memory schemas effectively.
+  source: DOCUMENT COLLECTION
+  target: MEMORY SCHEMAS
+- weight: 8.0
+  description: Working with document collections shifts complexity to memory search
+    over the list.
+  source: DOCUMENT COLLECTION
+  target: MEMORY SEARCH
+- weight: 15.0
+  description: The relationship between 'Schema' and 'Document Collection' is underrepresented.
+    While the content mentions individual memories following a specific schema, this
+    relationship could be stronger to reflect the importance of schema in managing
+    document collections. ; The relationship between 'Schema' and 'Document Collection'
+    could be stronger to reflect its importance in managing document collections.
+    This relationship indicates that a schema helps maintain structure and context
+    within a collection of documents.
+  source: DOCUMENT COLLECTION
+  target: SCHEMA
+- weight: 9.0
+  description: LangSmith enables retrieval of few-shot examples using a BM25-like
+    algorithm.
+  source: DYNAMIC FEW-SHOT EXAMPLE SELECTION
+  target: LANGSMITH
+- weight: 9.0
+  description: Dynamic few-shot example selectors can be used to achieve better performance
+    and relevance in AI tasks that involve few-shot learning.
+  source: DYNAMIC FEW-SHOT EXAMPLE SELECTORS
+  target: FEW-SHOT EXAMPLE PROMPTING
+- weight: 8.0
+  description: LangSmith dataset allows developers to store data and use dynamic few-shot
+    example selectors to tie few-shots more closely to evaluation harnesses.
+  source: DYNAMIC FEW-SHOT EXAMPLE SELECTORS
+  target: LANGSMITH DATASET
+- weight: 8.0
+  description: Long-Term Memory can utilize techniques like Editing Message Lists
+    to manage and optimize the storage of conversation history over extended periods.
+  source: EDITING MESSAGE LISTS
+  target: LONG-TERM MEMORY
+- weight: 8.0
+  description: Message Lists and Editing Message Lists are related because chat models
+    accept context using messages, and editing message lists involves trimming and
+    filtering these messages before passing them to the language model.
+  source: EDITING MESSAGE LISTS
+  target: MESSAGE LISTS
+- weight: 9.0
+  description: Chat models accept context using messages, which can be edited or filtered
+    before passing them to the language model.
+  source: EDITING MESSAGE LISTS
+  target: MESSAGES
+- weight: 7.0
+  description: Precision and recall are important metrics when evaluating the effectiveness
+    of editing message lists to filter relevant information for language models.
+  source: EDITING MESSAGE LISTS
+  target: PRECISION & RECALL
+- weight: 8.0
+  description: Both summarizing past conversations and editing message lists are techniques
+    used to manage large amounts of conversation history for language models.
+  source: EDITING MESSAGE LISTS
+  target: SUMMARIZING PAST CONVERSATIONS
+- weight: 8.0
+  description: Memory stores may use embedding functions for indexing and searching
+    data.
+  source: EMBEDDING FUNCTION
+  target: STORE (MEMORY STORE)
+- weight: 8.5
+  description: Episodic memory is often implemented through few-shot example prompting,
+    where agents learn from past sequences to perform tasks correctly.
+  source: EPISODIC MEMORY
+  target: FEW-SHOT EXAMPLE PROMPTING
+- weight: 7.0
+  description: Episodic memory in AI agents involves remembering past actions or events,
+    similar to how humans remember specific experiences.
+  source: EPISODIC MEMORY
+  target: PAST AGENT ACTIONS
+- weight: 8.0
+  description: LangSmith indexes datasets for dynamic few-shot example selection,
+    which can be linked to episodic memory as it involves recalling specific experiences.
+  source: EPISODIC MEMORY
+  target: LANGSMITH
+- weight: 8.0
+  description: Long-term memory includes personal events or occurrences stored as
+    experiences.
+  source: EXPERIENCES
+  target: LONG-TERM MEMORY
+- weight: 8.0
+  description: Long-term memory involves storing and retrieving specific pieces of
+    knowledge, which are facts.
+  source: FACTS
+  target: LONG-TERM MEMORY
+- weight: 9.0
+  description: Few-shot prompting is used to improve tool calling performance.
+  source: FEW-SHOT PROMPTING
+  target: TOOL CALLING PERFORMANCE
+- weight: 7.0
+  description: The `Store` also supports filtering by content over the list of memories.
+  source: FILTERING BY CONTENT
+  target: STORE
+- weight: 8.0
+  description: Stateful data, including uploaded files and retrieved documents, is
+    also stored in the graph's state to maintain context across multiple interactions.
+  source: GRAPH'S STATE
+  target: STATEFUL DATA
+- weight: 9.0
+  description: Messages in chat applications include human inputs, which are the text
+    or data entered by users.
+  source: HUMAN INPUTS
+  target: MESSAGES
+- weight: 6.5
+  description: HumanMessage is a type of message that can be part of the list managed
+    by processes like DeleteMessages or TrimMessages.
+  source: HUMANMESSAGE
+  target: MESSAGES
+- weight: 9.0
+  description: The configuration parameter 'end_on' specifies that conversations should
+    end with a HumanMessage.
+  source: HUMANMESSAGE
+  target: END_ON
+- weight: 8.0
+  description: The `summarize_conversation` function uses HumanMessages from the chat
+    history to create a summary.
+  source: HUMANMESSAGE
+  target: SUMMARIZE_CONVERSATION
+- weight: 9.0
+  description: An example of a memory store is the InMemoryStore, which saves data
+    to an in-memory dictionary.
+  source: INMEMORYSTORE
+  target: STORE (MEMORY STORE)
+- weight: 6.0
+  description: Some models may default to over-inserting, which can lead to information
+    loss.
+  source: INFORMATION LOSS
+  target: OVER-INSERTION
+- weight: 6.0
+  description: Some models may default to over-updating, which can also lead to information
+    loss.
+  source: INFORMATION LOSS
+  target: OVER-UPDATING
+- weight: 8.0
+  description: Data in long-term memory is often stored as JSON documents.
+  source: JSON DOCUMENTS
+  target: LONG-TERM MEMORY
+- weight: 16.0
+  description: The relationship between 'Profile' and 'JSON Patch' is missing. The
+    content mentions passing in the previous profile and generating a new one or applying
+    a JSON patch, indicating a need for this relationship. ; The relationship between
+    'Profile' and 'JSON Patch' is missing, as mentioned in the content. This relationship
+    indicates that a JSON patch can be used to apply changes to an existing profile.
+  source: JSON PATCH
+  target: PROFILE
+- weight: 5.0
+  description: JSON schema can be used to define the structure and validation rules
+    for update objects or dictionaries used in chat application message management.
+  source: JSON SCHEMA
+  target: UPDATE OBJECT OR DICTIONARY
+- weight: 6.0
+  description: YAML and JSON Schema are related if they play a role in managing or
+    representing the state or data within the system. Both can be used to define structures
+    for configuration files or data interchange formats.
+  source: JSON SCHEMA
+  target: YAML
+- weight: 8.0
+  description: LangChain is a technology framework that includes components like `Messages`.
+  source: LANGCHAIN
+  target: MESSAGES
+- weight: 8.0
+  description: LangChain includes components like `RemoveMessage` for message handling.
+  source: LANGCHAIN
+  target: REMOVEMESSAGE
+- weight: 10.0
+  description: LangChain provides the TrimMessages utility for managing message lists
+    based on token count and strategy.
+  source: LANGCHAIN
+  target: TRIMMESSAGES
+- weight: 7.5
+  description: LangGraph provides additional tools for managing conversation states
+    and messages, including the `add_messages` process.
+  source: LANGGRAPH
+  target: ADD_MESSAGES
+- weight: 6.0
+  description: The my_node function is an example of a node within the LangGraph framework
+    that defines specific behavior for managing messages in chat applications.
+  source: LANGGRAPH
+  target: MY_NODE FUNCTION
+- weight: 7.0
+  description: The reducer function is integral to integrating with chat applications
+    by defining how updates to message lists are processed and managed within the
+    LangGraph framework.
+  source: LANGGRAPH
+  target: REDUCER FUNCTION
+- weight: 8.0
+  description: The Tweet generator uses the LangGraph memory store to save and retrieve
+    prompts.
+  source: LANGGRAPH MEMORY STORE
+  target: TWEET GENERATOR
+- weight: 8.0
+  description: The call_model function retrieves an updated prompt from the LangGraph
+    memory store and uses it to generate a response.
+  source: LANGGRAPH MEMORY STORE
+  target: CALL_MODEL FUNCTION
+- weight: 9.0
+  description: The update_instructions node interacts with the LangGraph memory store
+    to get the current prompt, incorporate feedback, update the prompt, and save it
+    back to the store.
+  source: LANGGRAPH MEMORY STORE
+  target: UPDATE_INSTRUCTIONS NODE
+- weight: 9.0
+  description: LangSmith can be used to evaluate and tune the behavior of models when
+    managing memory updates and searches.
+  source: LANGSMITH
+  target: EVALUATION
+- weight: 7.0
+  description: Both the memory store and LangSmith dataset are used for storing data,
+    with LangSmith offering more advanced features like dynamic few-shot example selectors.
+  source: LANGSMITH DATASET
+  target: STORE (MEMORY STORE)
+- weight: 9.0
+  description: Different types of memory such as semantic (facts), episodic (experiences),
+    and procedural (rules) are categorized under memory types.
+  source: LONG-TERM MEMORY
+  target: MEMORY TYPES
+- weight: 7.0
+  description: Long-Term Memory and Messages are related because long-term memory
+    techniques can involve managing conversation history over extended periods, which
+    includes handling a large number of messages.
+  source: LONG-TERM MEMORY
+  target: MESSAGES
+- weight: 17.0
+  description: Short-term memory also uses namespaces for organizing and searching
+    data. ; Long-term memory uses namespaces for organizing and searching data.
+  source: LONG-TERM MEMORY
+  target: NAMESPACES
+- weight: 8.0
+  description: Long-term memory encompasses procedural memories, which are rules that
+    help in performing tasks efficiently.
+  source: LONG-TERM MEMORY
+  target: RULES
+- weight: 10.0
+  description: Long-term memory relies on a memory store for data storage and retrieval.
+  source: LONG-TERM MEMORY
+  target: STORE (MEMORY STORE)
+- weight: 9.0
+  description: LangGraph provides stores to save and recall long-term memories, which
+    are scoped to any custom namespace.
+  source: LONG-TERM MEMORY
+  target: STORE
+- weight: 9.0
+  description: Long-term memory is a type of memory that allows recalling information
+    across multiple conversational threads.
+  source: LONG-TERM MEMORY
+  target: MEMORY
+- weight: 7.0
+  description: Precision and Recall are crucial metrics when evaluating the effectiveness
+    of Long-Term Memory systems in accurately retaining and recalling relevant information
+    from long conversation histories.
+  source: LONG-TERM MEMORY
+  target: PRECISION & RECALL
+- weight: 7.0
+  description: The reducer function in LangGraph is used by the manage_list function
+    to define how updates are processed for message lists.
+  source: MANAGE_LIST FUNCTION
+  target: REDUCER FUNCTION
+- weight: 9.0
+  description: State management plays a critical role in updating message lists through
+    the manage_list function, which defines how updates to the list are interpreted
+    and applied within chat applications.
+  source: MANAGE_LIST FUNCTION
+  target: STATE MANAGEMENT
+- weight: 7.0
+  description: The update object or dictionary is used by the manage_list function
+    to specify how message lists should be updated.
+  source: MANAGE_LIST FUNCTION
+  target: UPDATE OBJECT OR DICTIONARY
+- weight: 7.0
+  description: The content discusses using 'MaxTokens' to determine how many tokens
+    to keep from the list of messages.
+  source: MAXTOKENS
+  target: MESSAGES
+- weight: 9.0
+  description: The TrimMessages utility uses the MaxTokens parameter to determine
+    how many tokens to keep from the list of messages.
+  source: MAXTOKENS
+  target: TRIMMESSAGES
+- weight: 9.0
+  description: Short-term memory is a type of memory that allows recalling information
+    within a single conversational thread.
+  source: MEMORY
+  target: SHORT-TERM MEMORY
+- weight: 8.0
+  description: The store is used for managing memories, and it is crucial to establish
+    a clear relationship between these two entities.
+  source: MEMORY MANAGEMENT
+  target: STORE
+- weight: 29.0
+  description: User preferences can influence how memories are managed and stored.
+    ; User preferences influence memory management, and this relationship should be
+    expanded to provide a comprehensive explanation of how user preferences impact
+    memory management strategies. ; User preferences impact memory management strategies
+    by guiding how memories are stored, retrieved, and managed based on individual
+    user needs and behaviors. ; User preferences impact memory management strategies
+    by guiding how memories are stored, retrieved, and managed based on individual
+    user settings and behaviors.
+  source: MEMORY MANAGEMENT
+  target: USER PREFERENCES
+- weight: 14.0
+  description: The relationship between 'Strict Decoding' and 'Memory Schemas' is
+    missing. The content suggests that strict decoding can help ensure memory schemas
+    remain valid, which should be captured as a relationship. ; The relationship between
+    'Strict Decoding' and 'Memory Schemas' is missing, as suggested by the content.
+    This relationship implies that strict decoding ensures memory schemas remain valid
+    when generating documents.
+  source: MEMORY SCHEMAS
+  target: STRICT DECODING
+- weight: 9.0
+  description: Messages in chat applications also include model responses, which are
+    automated replies generated by machine learning models.
+  source: MESSAGES
+  target: MODEL RESPONSES
+- weight: 18.0
+  description: The `Messages` data type is a part of the conversation state. ; The
+    state contains a list of messages that can be manipulated by processes like DeleteMessages.
+  source: MESSAGES
+  target: STATE
+- weight: 6.0
+  description: The content mentions using a strategy for handling the boundary when
+    trimming messages, which is related to the 'Messages' entity.
+  source: MESSAGES
+  target: STRATEGY
+- weight: 8.0
+  description: Messages contribute to the growth of token-rich message lists in chat
+    applications, where context windows are limited and managing tokens efficiently
+    is crucial.
+  source: MESSAGES
+  target: TOKEN-RICH MESSAGE LISTS
+- weight: 6.5
+  description: SystemMessage is another type of message that can be included in the
+    list managed by message-related processes.
+  source: MESSAGES
+  target: SYSTEMMESSAGE
+- weight: 8.0
+  description: The number of tokens in messages is a constraint that affects how messages
+    are managed, especially when using LLMs.
+  source: MESSAGES
+  target: TOKEN COUNT
+- weight: 8.0
+  description: The process of summarizing past conversations extends the MessagesState
+    component to include a `summary` key.
+  source: MESSAGESSTATE
+  target: SUMMARIZING PAST CONVERSATIONS
+- weight: 8.0
+  description: Model weights are a component of procedural memory in AI agents.
+  source: MODEL WEIGHTS
+  target: PROCEDURAL MEMORY
+- weight: 7.0
+  description: A namespace is used to organize and manage the storage (store) of data
+    or entities.
+  source: NAMESPACE
+  target: STORE
+- weight: 6.0
+  description: Procedural memory in AI agents can store system prompts or instructions,
+    similar to how humans retain motor skills and instincts.
+  source: PROCEDURAL MEMORY
+  target: AGENT SYSTEM PROMPT
+- weight: 8.0
+  description: Semantic memories can be managed using a profile, which is a JSON document
+    with various key-value pairs representing information about a user or entity.
+  source: PROFILE
+  target: SEMANTIC MEMORY
+- weight: 8.5
+  description: The `RemoveMessage` component is used by the `add_messages` process
+    to delete specific messages from the conversation state.
+  source: REMOVEMESSAGE
+  target: ADD_MESSAGES
+- weight: 7.5
+  description: The `my_node_2` process creates `RemoveMessage` components to delete
+    all but the last two messages from the `messages` list in the conversation state.
+  source: REMOVEMESSAGE
+  target: MY_NODE_2
+- weight: 7.0
+  description: The `Store` supports semantic search over the list of memories.
+  source: SEMANTIC SEARCH
+  target: STORE
+- weight: 8.5
+  description: Short-term memory is scoped to a single thread or conversation.
+  source: SHORT-TERM MEMORY
+  target: THREAD
+- weight: 7.0
+  description: The process of summarizing past conversations involves generating a
+    summary that is stored in the extended State component.
+  source: STATE
+  target: SUMMARIZING PAST CONVERSATIONS
+- weight: 8.5
+  description: LangGraph manages short-term memory as part of the agent's state, which
+    is persisted via thread-scoped checkpoints.
+  source: STATE
+  target: THREAD
+- weight: 9.5
+  description: The `add_messages` process manages messages in the conversation state,
+    allowing for adding new messages and handling RemoveMessage components.
+  source: STATE
+  target: ADD_MESSAGES
+- weight: 9.0
+  description: The `summarize_conversation` function operates on the State component
+    to generate and update the conversation summary.
+  source: STATE
+  target: SUMMARIZE_CONVERSATION
+- weight: 7.0
+  description: The update_instructions node uses the State data structure to capture
+    messages from conversations with users.
+  source: STATE
+  target: UPDATE_INSTRUCTIONS NODE
+- weight: 8.5
+  description: The TrimMessages utility uses a strategy to handle the boundary when
+    trimming messages, such as keeping a certain number of tokens.
+  source: STRATEGY
+  target: TRIMMESSAGES
+- weight: 8.0
+  description: The configuration parameter 'include_system' indicates whether to retain
+    SystemMessages.
+  source: SYSTEMMESSAGE
+  target: INCLUDE_SYSTEM
+- weight: 9.0
+  description: The configuration parameter 'end_on' also specifies that conversations
+    should end with a ToolMessage.
+  source: TOOLMESSAGE
+  target: END_ON
+- weight: 8.0
+  description: The Trustcall package helps manage memory updating, which is a challenge
+    when working with document collections.
+  source: TRUSTCALL PACKAGE
+  target: MEMORY UPDATING
+- weight: 8.0
+  description: The `my_node_1` process uses the `add_messages` function to add an
+    AI message to the `messages` list in the conversation state.
+  source: ADD_MESSAGES
+  target: MY_NODE_1
+- weight: 8.0
+  description: The call_model function retrieves instructions from the agent_instructions
+    namespace in the memory store.
+  source: AGENT_INSTRUCTIONS NAMESPACE
+  target: CALL_MODEL FUNCTION
+- weight: 8.0
+  description: The call_model function formats a prompt using the prompt_template
+    based on instructions and conversation history.
+  source: CALL_MODEL FUNCTION
+  target: PROMPT_TEMPLATE
+- weight: 7.0
+  description: The update_instructions node searches for current instructions in the
+    instructions namespace of the memory store.
+  source: INSTRUCTIONS NAMESPACE
+  target: UPDATE_INSTRUCTIONS NODE
+- weight: 9.0
+  description: The update_instructions node invokes a language model (llm.invoke)
+    to generate new instructions based on user feedback and conversation history.
+  source: LLM.INVOKE
+  target: UPDATE_INSTRUCTIONS NODE
+- weight: 9.0
+  description: The `summarize_conversation` function invokes the chat model using
+    the `model.invoke` method to generate the summary.
+  source: MODEL.INVOKE
+  target: SUMMARIZE_CONVERSATION
+- weight: 9.0
+  description: The update_instructions node generates new instructions, which are
+    then saved to the agent_instructions namespace in the memory store.
+  source: NEW_INSTRUCTIONS
+  target: UPDATE_INSTRUCTIONS NODE

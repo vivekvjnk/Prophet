@@ -1,0 +1,817 @@
+('Add_messages Function', 'Reducer Functions'):
+  description:
+  - The add_messages function is a more advanced reducer that handles both appending
+    and updating messages correctly.
+  strength:
+  - 9.5
+('Annotated', 'operator.add'):
+  description:
+  - The `Annotated` type is used to specify a reducer function (`operator.add`) for
+    a key in the state.
+  strength:
+  - 8.5
+('AnyMessage', 'Graph State'):
+  description:
+  - AnyMessage is a generic message type used in the graph state to store messages.
+  strength:
+  - 7.5
+('BaseCheckpointSaver', 'Threads'):
+  description:
+  - The `BaseCheckpointSaver` technology saves snapshots of the graph state at every
+    superstep, organized by thread ID.
+  strength:
+  - 8.0
+('BaseStore', 'Threads'):
+  description:
+  - The `BaseStore` technology uses custom namespaces for organizing data, enabling
+    cross-thread persistence.
+  - BaseStore uses custom namespaces for organizing data, enabling cross-thread persistence
+    which is crucial for maintaining long-term memories and learning from past interactions
+    across different threads.
+  - BaseStore and Threads are related as they both handle persistence in LangGraph,
+    but BaseStore uses custom namespaces for organizing data across threads, enabling
+    cross-thread persistence unlike checkpointers which save state by thread ID.
+  strength:
+  - 8.0
+  - 7.0
+  - 7.0
+('Breakpoints', 'Persistence Layer'):
+  description:
+  - Breakpoints rely on the persistence layer to save and restore the state of the
+    graph at specific points during execution.
+  - Breakpoints rely on the persistence layer to save the state of the graph after
+    each step, enabling stepping through execution and human-in-the-loop workflows.
+  strength:
+  - 7.5
+  - 8.0
+('ChatModel', 'AIMessage'):
+  description:
+  - The `ChatModel` also interacts with `AIMessage`, which represents the response
+    from the Language Learning Model (LLM).
+  strength:
+  - 8.0
+('ChatModel', 'HumanMessage'):
+  description:
+  - The `ChatModel` accepts a list of `Message` objects, and specifically interacts
+    with `HumanMessage` as user input.
+  strength:
+  - 8.0
+('ChatModel', 'Message'):
+  description:
+  - LangChain's `ChatModel` accepts a list of `Message` objects as inputs, facilitating
+    interaction with chat models.
+  strength:
+  - 9.0
+('Cognitive Architecture', 'StateGraph'):
+  description:
+  - A cognitive architecture can be implemented using a StateGraph to process information
+    and configurations.
+  - The cognitive architecture is implemented using a StateGraph, which allows for
+    the creation and management of complex graph structures with configurable nodes
+    and edges.
+  strength:
+  - 7.0
+  - 9.0
+('Command Object', 'Graph'):
+  description:
+  - A `Command` object, created using the value from the `interrupt` function, is
+    passed to a graph to resume its execution.
+  strength:
+  - 8.0
+('Command Object', 'Interrupt Function'):
+  description:
+  - The command object is used to resume graph execution after an interrupt function
+    has been triggered, allowing the graph to continue based on user input or other
+    conditions.
+  strength:
+  - 7.0
+('Command', 'Conditional Edges'):
+  description:
+  - Although 'Command' can achieve dynamic control flow similar to conditional edges,
+    the explicit relationship is not fully captured. This relationship should be established
+    to highlight their similarities and differences in achieving control flow.
+  - Both 'Command' and 'Conditional Edges' can achieve dynamic control flow, but their
+    explicit relationship should be established to highlight their similarities and
+    differences.
+  strength:
+  - 6.0
+  - 8.0
+('Command', 'Node'):
+  description:
+  - '`Command` can route to different nodes based on certain conditions.'
+  strength:
+  - 7.0
+('Command', 'Routing Function'):
+  description:
+  - A Command combines state updates and routing in a single function, an alternative
+    to conditional edges.
+  strength:
+  - 9.0
+('Command', 'RunnableConfig'):
+  description:
+  - The `Command` process uses configuration settings from `RunnableConfig`.
+  strength:
+  - 8.0
+('Command', 'State'):
+  description:
+  - '`Command` allows for both state updates and control flow decisions within the
+    same node.'
+  strength:
+  - 8.0
+('Command', 'ToolMessage'):
+  description:
+  - The `Command` process includes `ToolMessage` objects in its update messages.
+  strength:
+  - 7.0
+('Command', 'human-in-the-loop'):
+  description:
+  - Command is used to supply user input and resume execution when using interrupt()
+    in human-in-the-loop workflows.
+  strength:
+  - 8.0
+('Compile Method', 'Breakpoints'):
+  description:
+  - The compile method may use breakpoints to pause and inspect the state of the graph
+    during execution.
+  strength:
+  - 7.0
+('Compile Method', 'Checkpointers'):
+  description:
+  - The compile method may use checkpointers to save intermediate states of the graph.
+  strength:
+  - 7.5
+('Compiled Subgraph', 'Parent Graph'):
+  description:
+  - A compiled subgraph is a pre-compiled graph that can be directly added as a node
+    in a parent graph, requiring shared state keys for communication.
+  strength:
+  - 9.0
+('Configuration Schema', 'Configurable Key'):
+  description:
+  - The configuration schema defines the structure of the configurable keys that can
+    be used in the graph. These keys are used to configure different aspects of the
+    graph's behavior.
+  strength:
+  - 7.0
+('Configuration', 'ConfigSchema'):
+  description:
+  - The configuration schema defines the schema for configuration settings in a graph.
+  strength:
+  - 9.0
+('Configuration', 'Configurable Key'):
+  description:
+  - The configurable key is used to define user-defined configuration settings in
+    a graph.
+  strength:
+  - 8.0
+('Customer Support Application', 'State'):
+  description:
+  - A common use case is updating graph state from inside a tool, such as looking
+    up customer information in a customer support application.
+  strength:
+  - 7.0
+('Default Reducer', 'State'):
+  description:
+  - The Default Reducer updates the state based on partial updates from nodes without
+    specifying any reducer functions for keys.
+  strength:
+  - 8.0
+('END Node', 'StateGraph'):
+  description:
+  - The END Node represents a terminal node in the graph, denoting which edges have
+    no actions after they are done.
+  strength:
+  - 7.0
+('Edge', 'Superstep'):
+  description:
+  - All destination nodes of outgoing edges from a node are executed simultaneously
+    in the next superstep.
+  strength:
+  - 9.0
+('Edges', 'StateGraph'):
+  description:
+  - Edges define how logic is routed and how the graph decides to stop, being a crucial
+    part of StateGraph.
+  strength:
+  - 8.0
+('Graph Migrations', 'Checkpointers'):
+  description:
+  - The checkpointer is used to track state during graph migrations.
+  strength:
+  - 8.0
+('Graph Rendering', 'Command'):
+  description:
+  - The graph rendering is necessary when using `Command` objects to route to different
+    nodes.
+  strength:
+  - 6.0
+('Graph Rendering', 'Send'):
+  description:
+  - The relationship between 'Graph Rendering' and 'Send' is important for understanding
+    the rendering process when using 'Send'.
+  strength:
+  - 7.0
+('Graph State', 'Message Objects'):
+  description:
+  - The graph state stores a list of message objects.
+  strength:
+  - 8.0
+('Graph', 'Edges'):
+  description:
+  - Edges connect nodes within the graph, facilitating data flow between them.
+  strength:
+  - 9.0
+('Graph', 'Input Schema'):
+  description:
+  - The graph can have an explicit input schema that defines the structure of incoming
+    data.
+  strength:
+  - 8.0
+('Graph', 'JSON Schema'):
+  description:
+  - The content discusses JSON Schema in the context of defining schemas, but this
+    relationship is not captured.
+  strength:
+  - 7.0
+('Graph', 'Nodes'):
+  description:
+  - Nodes are components that make up the graph and interact with the state.
+  strength:
+  - 9.5
+('Graph', 'Output Schema'):
+  description:
+  - The graph can have an explicit output schema that defines the structure of outgoing
+    data.
+  strength:
+  - 8.0
+('Graph', 'PrivateState'):
+  description:
+  - Internal nodes within the graph may communicate using private state channels.
+  strength:
+  - 7.5
+('Graph', 'State'):
+  description:
+  - The state of the graph, which includes the schema and reducer functions for applying
+    updates to the state.
+  strength:
+  - 9.0
+('Graph', 'YAML'):
+  description:
+  - The content mentions using YAML for defining schemas, but this relationship is
+    not extracted.
+  strength:
+  - 8.0
+('Habit', 'Sustainable Alternative'):
+  description:
+  - The relationship between 'Habit' and 'Sustainable Alternative' is implied by the
+    concept of replacing an existing habit with a more environmentally friendly alternative
+    to promote sustainability.
+  strength:
+  - 7.0
+('Human-in-the-Loop Workflows', 'Interrupt Function'):
+  description:
+  - The interrupt function is a key component for enabling human-in-the-loop workflows,
+    allowing developers to collect user input and make decisions before resuming graph
+    execution.
+  strength:
+  - 9.0
+('InputState', 'OverallState'):
+  description:
+  - InputState is connected to OverallState through nodes that read from InputState
+    and write to OverallState, as demonstrated in node_1.
+  strength:
+  - 6.0
+('InputState', 'node_1'):
+  description:
+  - node_1 takes an InputState as input and processes it.
+  strength:
+  - 8.0
+('Interrupt Function', 'Command Object'):
+  description:
+  - The `interrupt` function returns a value that is used to create a `Command` object,
+    which is then passed to the graph to resume execution.
+  strength:
+  - 9.0
+('Interrupt Function', 'Human-in-the-Loop Workflows'):
+  description:
+  - The `interrupt` function is used in human-in-the-loop workflows to pause graph
+    execution and collect user input or validate the graph state before resuming.
+  strength:
+  - 8.5
+('JSON Schema', 'Compiled Subgraph'):
+  description:
+  - JSON Schema can be used to validate the structure of compiled subgraphs.
+  strength:
+  - 7.0
+('JSON Schema', 'Data Validation'):
+  description:
+  - JSON Schema is used for data validation, but it does not have a direct relationship
+    with the entities in this context.
+  strength:
+  - 3.0
+('JSON Schema', 'Parent Graph'):
+  description:
+  - JSON Schema can be used to validate the structure of parent graphs.
+  strength:
+  - 7.0
+('JSON Schema', 'Shared Keys'):
+  description:
+  - JSON Schema can be used to validate the structure of shared keys between parent
+    graphs and subgraphs.
+  strength:
+  - 7.0
+('JSON Schema', 'State Schema'):
+  description:
+  - JSON Schema is commonly used to define and validate state schemas.
+  strength:
+  - 9.0
+('JSON Schema', 'Subgraph Node Function'):
+  description:
+  - JSON Schema can be used to validate the structure of subgraph node functions.
+  strength:
+  - 7.0
+('JSON Schema', 'Subgraphs'):
+  description:
+  - JSON Schema can be used to validate the structure of subgraphs.
+  strength:
+  - 7.0
+('JSON Schema', 'Transform State'):
+  description:
+  - JSON Schema can be used to define and validate state transformation rules.
+  strength:
+  - 7.0
+('JSON Serializable Value', 'Command Object'):
+  description:
+  - The value returned by the `interrupt` function is typically a JSON serializable
+    object that is used to create a `Command` object.
+  strength:
+  - 7.5
+('LangGraph', 'Command'):
+  description:
+  - LangGraph provides a way to combine control flow and state updates using `Command`
+    objects.
+  strength:
+  - 9.0
+('LangGraph', 'Edges'):
+  description:
+  - LangGraph uses Python functions called `Edges` to determine which `Node` to execute
+    next based on the current `State`.
+  strength:
+  - 9.0
+('LangGraph', 'Message Passing'):
+  description:
+  - LangGraph's underlying graph algorithm uses message passing to define a general
+    program, where nodes send messages along edges.
+  strength:
+  - 8.5
+('LangGraph', 'Nodes'):
+  description:
+  - LangGraph models agent workflows using Python functions called `Nodes`, which
+    encode the logic of agents.
+  strength:
+  - 9.0
+('LangGraph', 'OverallState'):
+  description:
+  - LangGraph supports returning 'Send' objects from conditional edges, which can
+    be used to pass state information to downstream nodes.
+  strength:
+  - 8.0
+('LangGraph', 'Pregel'):
+  description:
+  - LangGraph is inspired by Google's Pregel system for large-scale graph processing.
+  strength:
+  - 8.0
+('LangGraph', 'Send'):
+  description:
+  - LangGraph supports returning `Send` objects from conditional edges.
+  strength:
+  - 8.0
+('LangGraph', 'State'):
+  description:
+  - LangGraph uses a shared data structure called `State` to represent the current
+    snapshot of your application.
+  strength:
+  - 9.0
+('LangGraph', 'Super-Steps'):
+  description:
+  - LangGraph uses super-steps in its algorithm to process the graph iteratively.
+  strength:
+  - 7.5
+('Map-Reduce Design Pattern', 'StateGraph'):
+  description:
+  - The map-reduce design pattern is an example where the exact edges are not known
+    ahead of time, similar to how StateGraph can handle dynamic states.
+  strength:
+  - 7.5
+('Message', 'AIMessage'):
+  description:
+  - '`AIMessage` is a specific type of message representing the response from an LLM
+    (Large Language Model) in a chat interaction.'
+  strength:
+  - 7.0
+('Message', 'HumanMessage'):
+  description:
+  - '`HumanMessage` is a specific type of message representing user input in a chat
+    interaction.'
+  strength:
+  - 7.0
+('MessageGraph', 'State'):
+  description:
+  - The `State` of a `MessageGraph` is ONLY a list of messages, which makes it suitable
+    for chatbots but not for most other applications.
+  strength:
+  - 7.5
+('MessagesState', 'Graph State'):
+  description:
+  - MessagesState is a prebuilt state that simplifies using messages in the graph
+    state.
+  strength:
+  - 8.0
+('MessagesState', 'State'):
+  description:
+  - The State class is a subclass of MessagesState that adds additional fields, such
+    as documents.
+  strength:
+  - 9.0
+('Multi-Agent Handoffs', 'Command'):
+  description:
+  - '`Command` can be used in scenarios involving multi-agent handoffs.'
+  strength:
+  - 5.0
+('Multi-Agent Systems', 'Subgraphs'):
+  description:
+  - Subgraphs can be used to build multi-agent systems by encapsulating different
+    parts of the system into separate subgraphs that interact with each other.
+  strength:
+  - 7.0
+('Node', 'Edge'):
+  description:
+  - A node can have multiple outgoing edges.
+  strength:
+  - 8.0
+('Node', 'Player'):
+  description:
+  - The relationship between 'Node' and 'Player' can be inferred from the context
+    of graph theory where a node can represent a player in a game or simulation.
+  strength:
+  - 8.0
+('Node', 'State'):
+  description:
+  - Nodes return partial updates to the state, which are then applied by the reducer.
+  strength:
+  - 7.5
+('Nodes', 'Graph'):
+  description:
+  - Nodes are fundamental components that make up graphs, and graphs consist of multiple
+    nodes connected by edges.
+  strength:
+  - 10.0
+('Nodes', 'RunnableConfig'):
+  description:
+  - Nodes can optionally take a config argument containing configurable parameters
+    like thread_id.
+  strength:
+  - 8.0
+('Nodes', 'Subgraphs'):
+  description:
+  - Nodes can be part of subgraphs, which are themselves graphs used as nodes in other
+    graphs.
+  strength:
+  - 9.0
+('Operator.add', 'Reducer Functions'):
+  description:
+  - Operator.add can be used as a simple reducer function to append messages to an
+    existing list.
+  strength:
+  - 7.0
+('OverallState', 'node_2'):
+  description:
+  - node_2 reads from the "foo" channel of OverallState and processes it.
+  strength:
+  - 8.0
+('PrivateState', 'StateGraph'):
+  description:
+  - PrivateState can be declared within the graph by nodes, even if it was not passed
+    during StateGraph initialization, as long as its schema is defined.
+  strength:
+  - 5.0
+('PrivateState', 'node_3'):
+  description:
+  - node_3 reads from the "bar" channel of PrivateState and processes it.
+  strength:
+  - 8.0
+('Recursion Limit', 'Graph'):
+  description:
+  - The recursion limit is a configuration parameter that can be set when invoking
+    a graph, affecting its execution behavior.
+  strength:
+  - 8.0
+('Recursion Limit', 'GraphRecursionError'):
+  description:
+  - When the recursion limit is reached, LangGraph raises a GraphRecursionError.
+  strength:
+  - 8.0
+('Recursion Limit', 'Recursion Limit Key'):
+  description:
+  - The recursion limit key is a standalone configuration setting for the recursion
+    limit.
+  strength:
+  - 9.0
+('Recursion Limit', 'Super-Steps'):
+  description:
+  - The recursion limit sets the maximum number of super-steps the graph can execute
+    during a single execution. Once the limit is reached, LangGraph will raise GraphRecursionError.
+  strength:
+  - 8.0
+('Reducer Functions', 'Graph State'):
+  description:
+  - The reducer function updates the list of messages in the graph state with each
+    state update.
+  strength:
+  - 9.0
+('Reducers', 'OverallState'):
+  description:
+  - Reducers are key to understanding how updates from nodes are applied to the OverallState.
+  - Reducers update specific channels within OverallState by applying reducer functions
+    to each key in the State.
+  strength:
+  - 8.0
+  - 8.0
+('Reducers', 'PrivateState'):
+  description:
+  - Reducers are also involved in applying updates to the PrivateState.
+  - Reducers update specific channels within PrivateState similarly to how they update
+    OverallState, using reducer functions for each key.
+  strength:
+  - 7.0
+  - 7.0
+('Routing Function', 'Node'):
+  description:
+  - A routing function determines the next node(s) to execute based on the current
+    state of the graph.
+  strength:
+  - 8.5
+('RunnableConfig', 'get_user_info'):
+  description:
+  - RunnableConfig is utilized within the get_user_info function to extract necessary
+    configuration details, such as user IDs, required for fetching user information.
+  strength:
+  - 9.0
+('RunnableConfig', 'lookup_user_info'):
+  description:
+  - RunnableConfig is used as a parameter in the lookup_user_info function to configure
+    and pass user-specific information for looking up user details.
+  strength:
+  - 9.0
+('RunnableLambda', 'Nodes'):
+  description:
+  - Functions are converted to RunnableLambda objects, which add batch and async support
+    to nodes.
+  strength:
+  - 8.0
+('START Node', 'StateGraph'):
+  description:
+  - The START Node represents the entry point where user input is sent to the graph.
+  strength:
+  - 7.0
+('START', 'Node'):
+  description:
+  - The entry point is the first node(s) that are run when the graph starts, specified
+    using the virtual START node.
+  strength:
+  - 8.5
+('Schema', 'PrivateState'):
+  description:
+  - While the content mentions using a private schema for internal node communication,
+    the strength or explicitness of this relationship could be better defined.
+  strength:
+  - 6.0
+('Schema', 'Pydantic Model'):
+  description:
+  - A schema can also be defined using a Pydantic model, providing additional validation
+    and features.
+  strength:
+  - 8.0
+('Schema', 'TypedDict'):
+  description:
+  - A schema can be defined using a TypedDict, which specifies the structure of the
+    data.
+  strength:
+  - 8.5
+('Send', 'Conditional Edges'):
+  description:
+  - The content mentions that 'Send' objects are returned from conditional edges,
+    indicating a relationship between these two entities.
+  strength:
+  - 7.0
+('Send', 'Node'):
+  description:
+  - '`Send` takes two arguments: the name of the node and the state to pass to that
+    node.'
+  strength:
+  - 7.0
+('Serialization', 'LangChain Messages'):
+  description:
+  - Serialization converts messages into a format that can be easily stored or transmitted,
+    allowing for state updates in the graph.
+  strength:
+  - 8.5
+('Shared Keys', 'Parent Graph'):
+  description:
+  - Shared keys are necessary for communication between a subgraph and its parent
+    graph when adding the subgraph directly as a node.
+  strength:
+  - 9.0
+('State Schema', 'Subgraphs'):
+  description:
+  - The state schema defines the structure of the state used within a subgraph, specifying
+    the keys and their types required for state management.
+  strength:
+  - 8.5
+('State', 'Persistence Layer'):
+  description:
+  - The state of a graph is managed by the persistence layer, which saves and retrieves
+    it during execution.
+  strength:
+  - 8.0
+('State', 'Reducer Functions'):
+  description:
+  - Reducer functions are used to apply updates to the state of the graph.
+  strength:
+  - 8.0
+('State', 'Schema'):
+  description:
+  - The schema defines the structure of the data used in the graph.
+  strength:
+  - 8.5
+('StateGraph', 'Conditional Edges'):
+  description:
+  - The StateGraph supports conditional edges, which allow optional routing to one
+    or more edges.
+  strength:
+  - 9.0
+('StateGraph', 'END'):
+  description:
+  - END is a part of the StateGraph and marks the conclusion of the process.
+  strength:
+  - 6.0
+('StateGraph', 'Edges'):
+  description:
+  - Edges connect nodes in a StateGraph, defining the flow of processing.
+  strength:
+  - 8.0
+('StateGraph', 'Nodes'):
+  description:
+  - Nodes are added to the graph using the add_node method of StateGraph.
+  - A StateGraph consists of nodes that process state and configuration.
+  strength:
+  - 9.0
+  - 9.0
+('StateGraph', 'Parent Graph'):
+  description:
+  - StateGraph is used to define and manage both subgraphs and parent graphs, indicating
+    a direct interaction between them.
+  strength:
+  - 8.5
+('StateGraph', 'START'):
+  description:
+  - START is a part of the StateGraph and marks the beginning of the process.
+  strength:
+  - 6.0
+('StateGraph', 'State'):
+  description:
+  - The `State` of a `StateGraph` is more complex than just a list of messages, making
+    it suitable for most applications.
+  - The state is processed by nodes within a StateGraph.
+  strength:
+  - 8.0
+  - 9.0
+('StateGraph', 'Subgraphs'):
+  description:
+  - StateGraph is the framework or tool used to define and manage both subgraphs and
+    their parent graphs.
+  strength:
+  - 7.0
+('Subgraph Node Function', 'Parent Graph'):
+  description:
+  - A subgraph node function is used to invoke a subgraph with a completely different
+    schema, requiring transformation of states between the subgraph and its parent
+    graph.
+  strength:
+  - 8.5
+('Subgraphs', 'Graph'):
+  description:
+  - A subgraph is a type of graph that is used as a node in another graph, allowing
+    for encapsulation and reuse of nodes.
+  strength:
+  - 8.0
+('Subgraphs', 'Multi-Agent Systems'):
+  description:
+  - Subgraphs can be used to build multi-agent systems by defining different parts
+    of the system as separate subgraphs that communicate through well-defined interfaces.
+  strength:
+  - 7.5
+('Subgraphs', 'Parent Graph'):
+  description:
+  - A subgraph can be added directly as a node in a parent graph or through a function
+    that invokes the subgraph.
+  strength:
+  - 8.0
+('ToolNode', 'Command'):
+  description:
+  - The `ToolNode` prebuilt component automatically handles tools returning `Command`
+    objects.
+  strength:
+  - 9.0
+('ToolNode', 'human-in-the-loop'):
+  description:
+  - ToolNode automatically handles tools returning Command objects and propagates
+    them to the graph state, which is important for understanding the full scope of
+    human-in-the-loop interactions.
+  - ToolNode interacts with human-in-the-loop workflows by automatically handling
+    tools returning Command objects and propagating them to the graph state, which
+    is crucial for resuming execution after user input collection.
+  strength:
+  - 9.0
+  - 8.0
+('Transform State', 'Subgraph Node Function'):
+  description:
+  - The transform state is used by a subgraph node function to convert the input (parent)
+    state to the subgraph state before invoking the subgraph and then converting the
+    results back to the parent state.
+  strength:
+  - 9.5
+('YAML', 'Compiled Subgraph'):
+  description:
+  - YAML might be used for configuring compiled subgraphs, although this relationship
+    is not explicitly stated in the content.
+  strength:
+  - 6.0
+('YAML', 'Configuration'):
+  description:
+  - YAML can be used for configuration files, but it does not have a direct relationship
+    with the entities in this context.
+  strength:
+  - 3.0
+('YAML', 'Parent Graph'):
+  description:
+  - YAML might be used for configuring parent graphs, although this relationship is
+    not explicitly stated in the content.
+  strength:
+  - 6.0
+('YAML', 'Shared Keys'):
+  description:
+  - YAML might be used for configuring shared keys between parent graphs and subgraphs,
+    although this relationship is not explicitly stated in the content.
+  strength:
+  - 6.0
+('YAML', 'State Schema'):
+  description:
+  - YAML might be used for defining state schemas, although this relationship is not
+    explicitly stated in the content.
+  strength:
+  - 6.0
+('YAML', 'Subgraph Node Function'):
+  description:
+  - YAML might be used for configuring subgraph node functions, although this relationship
+    is not explicitly stated in the content.
+  strength:
+  - 6.0
+('YAML', 'Subgraphs'):
+  description:
+  - YAML might be used for configuring subgraphs, although this relationship is not
+    explicitly stated in the content.
+  strength:
+  - 6.0
+('YAML', 'Transform State'):
+  description:
+  - YAML might be used for defining state transformation rules, although this relationship
+    is not explicitly stated in the content.
+  strength:
+  - 6.0
+('human-in-the-loop', 'interrupt()'):
+  description:
+  - The `human-in-the-loop` concept involves using the `interrupt()` process to collect
+    user input.
+  strength:
+  - 6.0
+('lookup_user_info', 'get_user_info'):
+  description:
+  - The `lookup_user_info` function calls `get_user_info` to retrieve user information.
+  strength:
+  - 9.0
+('node_1', 'OverallState'):
+  description:
+  - node_1 writes to the "foo" channel of OverallState.
+  strength:
+  - 9.0
+('node_2', 'PrivateState'):
+  description:
+  - node_2 writes to the "bar" channel of PrivateState.
+  strength:
+  - 9.0
+('node_3', 'OutputState'):
+  description:
+  - node_3 writes to the OutputState, though not explicitly defined in the schema.
+  strength:
+  - 7.0

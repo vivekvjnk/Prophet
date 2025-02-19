@@ -1,0 +1,6 @@
+**/__pycache__/
+**/ValidationWrapper.log
+ValidationWrapper.log
+temp.parquet
+
+**/**_vector_db/

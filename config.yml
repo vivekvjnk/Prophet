@@ -1,0 +1,7 @@
+# LLM related configurations
+llm_model: "phi4:latest"
+token_limit: 300
+
+# Storage related configurations
+storage_backend: "LocalStorage"
+storage_dir: "infra/storage"

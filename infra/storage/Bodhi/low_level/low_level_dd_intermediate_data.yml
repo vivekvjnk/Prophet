@@ -1,0 +1,1744 @@
+entities:
+  AIMessage:
+    description:
+    - A specific type of message representing the response from an LLM (Large Language
+      Model) in a chat interaction.
+    type:
+    - DataTypes
+  Add_messages Function:
+    description:
+    - A prebuilt function in LangChain that appends new messages to the existing list
+      and also handles updates for existing messages by keeping track of message IDs.
+    type:
+    - Technologies and Frameworks
+  Annotated:
+    description:
+    - A Python feature used to attach metadata or additional information to types,
+      such as specifying a reducer function for a key in the state.
+    type:
+    - Technologies and Frameworks
+  AnyMessage:
+    description:
+    - A generic message type that can be used in the graph state, allowing for flexibility
+      in handling different types of messages.
+    type:
+    - DataTypes
+  BaseCheckpointSaver:
+    description:
+    - A technology or framework provided by LangGraph for saving snapshots of the
+      graph state at every superstep.
+    type:
+    - Technologies and Frameworks
+  BaseStore:
+    description:
+    - A technology or framework provided by LangGraph for document storage, using
+      custom namespaces to organize data.
+    type:
+    - Technologies and Frameworks
+  Breakpoints:
+    description:
+    - Points in the graph where execution can be paused or resumed, useful for debugging
+      and testing.
+    - A process that pauses graph execution at specific points and enables stepping
+      through execution step by step. They are powered by LangGraph's persistence
+      layer, which saves the state after each graph step.
+    type:
+    - Processes
+    - Configuration and Parameters
+  ChatModel:
+    description:
+    - A component from LangChain that accepts a list of `Message` objects as inputs,
+      facilitating interaction with chat models.
+    type:
+    - Technologies and Frameworks
+  Checkpointers:
+    description:
+    - A tool used to track and manage the state of a graph, allowing for migrations
+      and recovery from interruptions.
+    - Mechanisms used during compilation to save the state of the graph at specific
+      points, allowing for recovery or continuation from those points.
+    type:
+    - Technologies and Frameworks
+    - Configuration and Parameters
+  Cognitive Architecture:
+    description:
+    - The overall design and structure of a cognitive system or model, represented
+      by a graph in this context.
+    type:
+    - Concepts
+  Command:
+    description:
+    - An alternative to conditional edges that combines state updates and routing
+      in a single function.
+    - A process used to update the graph state from a tool, including messages and
+      state keys.
+    - An object returned from node functions in LangGraph that allows for both state
+      updates and control flow decisions within the same node. It can also achieve
+      dynamic control flow behavior similar to conditional edges.
+    type:
+    - Technologies and Frameworks
+    - Processes
+    - DataTypes
+  Command Object:
+    description:
+    - An object that is passed to the graph with a `resume` key set to the value returned
+      by the `interrupt` function. It is used to resume graph execution after an interruption.
+    type:
+    - DataTypes
+  Compile Method:
+    description:
+    - The method used to compile the graph, which includes basic checks on its structure
+      and allows for specifying runtime arguments like checkpointers and breakpoints.
+    type:
+    - Processes
+  Compiled Subgraph:
+    description:
+    - A compiled subgraph is a pre-compiled graph that can be directly added as a
+      node in a parent graph. It requires the parent graph and subgraph to share at
+      least one state key for communication.
+    type:
+    - Concepts
+  Conditional Edges:
+    description:
+    - A feature in LangGraph that allows for conditional routing between nodes based
+      on certain conditions.
+    type:
+    - Processes
+  ConfigSchema:
+    description:
+    - A data structure that defines the schema for configuration settings, such as
+      specifying which parts of the graph are configurable.
+    type:
+    - DataTypes
+  Configurable Key:
+    description:
+    - A key within the configuration settings of a graph that allows for dynamic changes
+      to specific parts of the system without altering the overall architecture.
+    type:
+    - Configuration and Parameters
+  Configuration:
+    description:
+    - The configuration settings that allow for marking certain parts of the graph
+      as configurable, enabling easy switching between models or system prompts.
+    type:
+    - Configuration and Parameters
+  Configuration Schema:
+    description:
+    - A schema that defines the configuration options available for a graph, allowing
+      for flexible customization and switching between different models or prompts.
+    type:
+    - DataTypes
+  Customer Support Application:
+    description:
+    - An application used by customer support teams to manage conversations with customers,
+      which may involve updating graph state based on customer information.
+    type:
+    - Entities (Real-World Objects)
+  Default Reducer:
+    description:
+    - A type of reducer that updates the state based on partial updates from nodes
+      without specifying any reducer functions for keys.
+    type:
+    - Components
+  END:
+    description:
+    - A placeholder representing the end node in the graph.
+    type:
+    - Entities (Real-World Objects)
+  END Node:
+    description:
+    - A special node in LangGraph that represents a terminal node, denoting which
+      edges have no actions after they are done.
+    type:
+    - Entities (Real-World Objects)
+  Edge:
+    description:
+    - A connection between two nodes, representing a relationship or transition.
+    type:
+    - Concepts
+  Edges:
+    description:
+    - The connections between nodes in a graph, defining relationships and data flow
+      between them.
+    - Define how logic is routed and how the graph decides to stop. There are normal
+      edges, conditional edges, entry points, and conditional entry points.
+    - Connections between nodes in the graph, representing relationships or data flow
+      between them.
+    - Python functions that determine which `Node` to execute next based on the current
+      `State`. They can be conditional branches or fixed transitions. By composing
+      `Nodes` and `Edges`, you can create complex, looping workflows that evolve the
+      `State` over time.
+    type:
+    - Concepts
+    - Components
+  Graph:
+    description:
+    - A structure consisting of nodes and edges that represent relationships between
+      entities.
+    - An entity representing a collection of nodes connected by edges, used in LangGraph
+      for defining workflows and processes.
+    type:
+    - Concepts
+    - Entities (Real-World Objects)
+  Graph Migrations:
+    description:
+    - The process of handling migrations of graph definitions, including nodes, edges,
+      and state, even when using a checkpointer to track state.
+    type:
+    - Processes
+  Graph Rendering:
+    description:
+    - The process of visualizing or displaying the graph structure, which is necessary
+      when using `Command` objects to route to different nodes.
+    type:
+    - Technologies and Frameworks
+  Graph State:
+    description:
+    - A component that stores the state of a graph, which can include various keys
+      such as 'messages' to keep track of conversation history.
+    type:
+    - Components
+  GraphRecursionError:
+    description:
+    - An error raised by LangGraph when the recursion limit is reached during a single
+      execution.
+    type:
+    - Technologies and Frameworks
+  Habit:
+    description:
+    - A common daily habit that can be environmentally friendly or not.
+    type:
+    - DataTypes
+  Human-in-the-Loop Workflows:
+    description:
+    - A process where human intervention is required at specific points during graph
+      execution. This can be achieved using functions like `interrupt` or through
+      breakpoints.
+    type:
+    - Processes
+  HumanMessage:
+    description:
+    - A specific type of message representing user input in a chat interaction.
+    type:
+    - DataTypes
+  Input Schema:
+    description:
+    - The schema that defines the structure of data accepted by the graph as input.
+    type:
+    - DataTypes
+  InputState:
+    description:
+    - A TypedDict representing the input state with a single key 'user_input' of type
+      string.
+    type:
+    - DataTypes
+  Interrupt Function:
+    description:
+    - A function used to pause graph execution at specific points, allowing for user
+      input collection, state validation, or decision-making before resuming execution.
+    type:
+    - Components
+  JSON Schema:
+    description:
+    - A vocabulary that allows you to annotate and validate JSON documents.
+    - JSON Schema is a vocabulary that allows you to annotate and validate JSON documents.
+      It defines the structure, types, and constraints of JSON data.
+    type:
+    - Technologies and Frameworks
+  JSON Serializable Value:
+    description:
+    - A data type that can be serialized into a JSON format, allowing for easy transmission
+      and storage of complex data structures.
+    type:
+    - DataTypes
+  LangChain Messages:
+    description:
+    - A data type used by LangChain to represent messages, which can be serialized
+      and deserialized during state updates.
+    type:
+    - DataTypes
+  LangGraph:
+    description:
+    - A design pattern that supports returning `Send` objects from conditional edges
+      and provides a way to combine control flow and state updates using `Command`
+      objects.
+    - A system that models agent workflows as graphs, using `Nodes`, `Edges`, and
+      a shared `State`.
+    type:
+    - Technologies and Frameworks
+  Map-Reduce Design Pattern:
+    description:
+    - A design pattern used for processing large datasets by dividing the data into
+      smaller chunks, processing each chunk independently, and then combining the
+      results.
+    type:
+    - Concepts
+  Message:
+    description:
+    - An abstract data type representing messages in the context of a chat model,
+      which can be of various forms such as `HumanMessage` or `AIMessage`.
+    type:
+    - DataTypes
+  Message Objects:
+    description:
+    - A conceptual guide that explains what message objects are, typically used in
+      the context of storing conversation history or communication within a system.
+    type:
+    - Concepts
+  Message Passing:
+    description:
+    - An algorithm used by LangGraph to define a general program. When a Node completes
+      its operation, it sends messages along one or more edges to other node(s).
+    type:
+    - Processes
+  MessageGraph:
+    description:
+    - A special type of graph where the `State` is ONLY a list of messages, rarely
+      used except for chatbots.
+    type:
+    - Technologies and Frameworks
+  MessagesState:
+    description:
+    - A prebuilt state component provided by LangChain that simplifies the use of
+      messages in the graph state by using a predefined 'messages' key and the `add_messages`
+      reducer.
+    - A base class for state management that tracks messages.
+    type:
+    - Components
+  Multi-Agent Handoffs:
+    description:
+    - A scenario where multiple agents are involved in a conversation, and it's important
+      to route to a different agent while passing some information to that agent.
+    type:
+    - Concepts
+  Multi-Agent Systems:
+    description:
+    - A concept involving multiple agents working together within a graph, each performing
+      specific tasks and interacting with others to achieve a common goal.
+    type:
+    - Concepts
+  Node:
+    description:
+    - An abstract component that processes input data and returns partial updates
+      to the state.
+    - A fundamental unit in a graph that represents an entity or action.
+    type:
+    - Concepts
+    - Components
+  Nodes:
+    description:
+    - The fundamental building blocks of a graph, representing entities or processes
+      in the system.
+    - Individual components within the graph that perform specific operations and
+      emit updates to the state.
+    - Python functions that encode the logic of your agents. They receive the current
+      `State` as input, perform some computation or side-effect, and return an updated
+      `State`.
+    - A component within a graph that represents a specific task or operation. Nodes
+      can be simple actions or complex subgraphs.
+    - In LangGraph, nodes are Python functions (sync or async) where the first positional
+      argument is the state and optionally the second positional argument is a config
+      containing configurable parameters.
+    type:
+    - Concepts
+    - Components
+  Operator.add:
+    description:
+    - A built-in Python operator that can be used as a reducer function to append
+      messages to an existing list, but it does not handle message updates correctly.
+    type:
+    - Technologies and Frameworks
+  Output Schema:
+    description:
+    - The schema that defines the structure of data produced by the graph as output.
+    type:
+    - DataTypes
+  OutputState:
+    description:
+    - A TypedDict representing the output state with a single key 'graph_output' of
+      type string.
+    type:
+    - DataTypes
+  OverallState:
+    description:
+    - A TypedDict representing the overall state with keys 'foo', 'user_input', and
+      'graph_output' of type string.
+    - A data structure representing the overall state of the graph, which is passed
+      as an argument to the `continue_to_jokes` function.
+    type:
+    - DataTypes
+  Parent Graph:
+    description:
+    - The main graph that contains other nodes, including subgraphs or functions that
+      invoke subgraphs. It manages its own state and can communicate with subgraphs
+      through shared keys.
+    type:
+    - Concepts
+  Persistence Layer:
+    description:
+    - A technology that saves the state of a graph after each step, enabling features
+      like breakpoints and human-in-the-loop workflows in LangGraph.
+    type:
+    - Technologies and Frameworks
+  Player:
+    description:
+    - An object representing a player with properties such as name and batting average.
+    type:
+    - DataTypes
+  Pregel:
+    description:
+    - A system for large-scale graph processing developed by Google, which inspired
+      the message passing algorithm in LangGraph.
+    type:
+    - Technologies and Frameworks
+  PrivateState:
+    description:
+    - A TypedDict representing a private state with a single key 'bar' of type string.
+    - An internal schema used for communication between nodes within the graph, separate
+      from the main input/output schema.
+    type:
+    - DataTypes
+  Pydantic Model:
+    description:
+    - A Python library that provides data validation and settings management using
+      Python type annotations.
+    type:
+    - Technologies and Frameworks
+  Recursion Limit:
+    description:
+    - A configuration parameter that sets the maximum depth of recursive calls allowed
+      in a graph. It helps prevent infinite loops and stack overflow errors.
+    - The maximum number of super-steps a graph can execute during a single execution.
+      Once reached, LangGraph raises `GraphRecursionError`.
+    type:
+    - Configuration and Parameters
+  Recursion Limit Key:
+    description:
+    - A standalone configuration key used to set the maximum number of super-steps
+      a graph can execute during a single execution.
+    type:
+    - Configuration and Parameters
+  Reducer Functions:
+    description:
+    - A function used in the graph state to update the list of messages with each
+      state update. It determines how new messages are integrated into the existing
+      list.
+    - Functions that specify how updates to the state are applied within the graph.
+    type:
+    - Processes
+  Reducers:
+    description:
+    - Key components for understanding how updates from nodes are applied to the State,
+      where each key in the State has its own independent reducer function.
+    type:
+    - Concepts
+  Routing Function:
+    description:
+    - A function that determines the next node(s) to execute based on the current
+      state of the graph.
+    type:
+    - Components
+  RunnableConfig:
+    description:
+    - A data structure containing configuration settings for a runnable tool.
+    - A configuration object that contains optional configurable parameters such as
+      thread_id.
+    type:
+    - DataTypes
+    - Configuration and Parameters
+  RunnableLambda:
+    description:
+    - A class that converts functions to runnable objects, adding batch and async
+      support along with native tracing and debugging.
+    type:
+    - Technologies and Frameworks
+  START:
+    description:
+    - A virtual node used to define the starting point of the graph execution.
+    - A placeholder representing the start node in the graph.
+    type:
+    - Entities (Real-World Objects)
+  START Node:
+    description:
+    - A special node in LangGraph that represents the starting point where user input
+      is sent to the graph.
+    type:
+    - Entities (Real-World Objects)
+  Schema:
+    description:
+    - The schema defines the structure of the data used in the graph, typically represented
+      as a TypedDict or Pydantic model.
+    type:
+    - DataTypes
+  Send:
+    description:
+    - 'An object returned by conditional edges in LangGraph, which takes two arguments:
+      the name of the node and the state to pass to that node.'
+    type:
+    - DataTypes
+  Serialization:
+    description:
+    - The process of converting messages into a format that can be easily stored or
+      transmitted, allowing for state updates in the graph.
+    type:
+    - Processes
+  Shared Keys:
+    description:
+    - Shared keys are common state keys between a parent graph and a subgraph that
+      facilitate communication and data exchange between them.
+    type:
+    - Concepts
+  State:
+    description:
+    - A data structure representing the current state within a node, which is updated
+      using the `Command` object.
+    - An object representing the current state of the graph, which includes information
+      about the nodes and their execution status. It is used in functions like `interrupt`
+      to validate the graph's state.
+    - The state of the graph, which includes the schema and reducer functions for
+      applying updates to the state.
+    - A subclass of MessagesState that adds additional fields, such as documents.
+    - A shared data structure that represents the current snapshot of your application.
+      It can be any Python type, but is typically a `TypedDict` or Pydantic `BaseModel`.
+    - A data structure that holds information about the current state of a graph or
+      its components during execution.
+    - A TypedDict representing the structure of the application's state, which includes
+      'foo' as an integer and 'bar' as a list of strings.
+    type:
+    - Components
+    - DataTypes
+  State Schema:
+    description:
+    - A state schema defines the structure of the state used within a graph, specifying
+      the keys and their types that are required for state management.
+    type:
+    - DataTypes
+  StateGraph:
+    description:
+    - A class used to build a state graph with nodes and edges, allowing for the definition
+      of input, output, and internal states.
+    - StateGraph is a framework used for building graphs with state management capabilities,
+      allowing nodes to communicate via shared state keys.
+    - A graph class in LangGraph where nodes are added using the add_node method.
+    - A specific implementation of a graph structure that supports conditional edges
+      and entry points.
+    - The main graph class parameterized by a user-defined `State` object.
+    - A framework or tool used for creating graphs with state management capabilities.
+    type:
+    - Technologies and Frameworks
+  Subgraph Node Function:
+    description:
+    - A function that invokes a subgraph by transforming the parent graph's state
+      into the subgraph's state schema, calling the subgraph, and then transforming
+      the subgraph's output back into the parent graph's state schema.
+    type:
+    - Components
+  Subgraphs:
+    description:
+    - A concept where a graph is used as a node in another graph, enabling encapsulation
+      and reuse of nodes across multiple graphs. Subgraphs can be used for building
+      multi-agent systems, reusing node sets, or allowing independent team work on
+      different parts of the graph.
+    - A subgraph is a smaller graph that can be integrated into a larger parent graph.
+      It can be added directly as a compiled subgraph or through a function that invokes
+      the subgraph.
+    type:
+    - Concepts
+  Super-Steps:
+    description:
+    - Discrete iterations over the graph nodes where nodes that run in parallel are
+      part of the same super-step, while nodes that run sequentially belong to separate
+      super-steps.
+    - A concept referring to the steps or iterations executed within a graph during
+      its operation.
+    type:
+    - Concepts
+    - Processes
+  Superstep:
+    description:
+    - A parallel execution step in the graph where all destination nodes of outgoing
+      edges from a node are executed simultaneously.
+    type:
+    - Processes
+  Sustainable Alternative:
+    description:
+    - An environmentally friendly alternative to a common daily habit.
+    type:
+    - DataTypes
+  Threads:
+    description:
+    - A concept representing individual sessions or conversations between a graph
+      and a user in LangGraph.
+    type:
+    - Concepts
+  ToolMessage:
+    description:
+    - A data type representing a message from a tool, used in updating the message
+      history.
+    type:
+    - DataTypes
+  ToolNode:
+    description:
+    - A prebuilt component in LangGraph that automatically handles tools returning
+      `Command` objects and propagates them to the graph state.
+    type:
+    - Technologies and Frameworks
+  Transform State:
+    description:
+    - The process of transforming the input (parent) state to match the subgraph's
+      state schema before invoking the subgraph, and transforming the results back
+      to the parent state after the invocation.
+    type:
+    - Processes
+  TypedDict:
+    description:
+    - A Python data structure used to define the schema of the graph state.
+    type:
+    - Technologies and Frameworks
+  YAML:
+    description:
+    - A human-readable data serialization language commonly used for configuration
+      files and data exchange.
+    - YAML (YAML Ain't Markup Language) is a human-readable data serialization standard
+      used for configuration files and data exchange between systems.
+    type:
+    - Technologies and Frameworks
+  get_user_info:
+    description:
+    - A process or function that retrieves user information based on the provided
+      user ID.
+    type:
+    - Processes
+  human-in-the-loop:
+    description:
+    - A concept involving human interaction and input collection during workflow execution.
+    type:
+    - Concepts
+  interrupt():
+    description:
+    - A process used to collect user input in a human-in-the-loop workflow.
+    type:
+    - Processes
+  lookup_user_info:
+    description:
+    - A function that looks up user information to assist with questions.
+    type:
+    - Components
+  node_1:
+    description:
+    - A function that takes an InputState and returns an OverallState by writing to
+      the 'foo' channel.
+    type:
+    - Processes
+  node_2:
+    description:
+    - A function that reads from OverallState and writes to PrivateState by adding
+      a new key 'bar'.
+    type:
+    - Processes
+  node_3:
+    description:
+    - A function that reads from PrivateState and writes to OutputState by modifying
+      the 'graph_output' channel.
+    type:
+    - Processes
+  operator.add:
+    description:
+    - A built-in Python function that adds two arguments together, used here to specify
+      how the 'bar' key should be updated in the state.
+    type:
+    - Technologies and Frameworks
+relationships:
+  ? !!python/tuple
+  - Add_messages Function
+  - Reducer Functions
+  : description:
+    - The add_messages function is a more advanced reducer that handles both appending
+      and updating messages correctly.
+    strength:
+    - 9.5
+  ? !!python/tuple
+  - Annotated
+  - operator.add
+  : description:
+    - The `Annotated` type is used to specify a reducer function (`operator.add`)
+      for a key in the state.
+    strength:
+    - 8.5
+  ? !!python/tuple
+  - AnyMessage
+  - Graph State
+  : description:
+    - AnyMessage is a generic message type used in the graph state to store messages.
+    strength:
+    - 7.5
+  ? !!python/tuple
+  - BaseCheckpointSaver
+  - Threads
+  : description:
+    - The `BaseCheckpointSaver` technology saves snapshots of the graph state at every
+      superstep, organized by thread ID.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - BaseStore
+  - Threads
+  : description:
+    - The `BaseStore` technology uses custom namespaces for organizing data, enabling
+      cross-thread persistence.
+    - BaseStore uses custom namespaces for organizing data, enabling cross-thread
+      persistence which is crucial for maintaining long-term memories and learning
+      from past interactions across different threads.
+    - BaseStore and Threads are related as they both handle persistence in LangGraph,
+      but BaseStore uses custom namespaces for organizing data across threads, enabling
+      cross-thread persistence unlike checkpointers which save state by thread ID.
+    strength:
+    - 8.0
+    - 7.0
+    - 7.0
+  ? !!python/tuple
+  - Breakpoints
+  - Persistence Layer
+  : description:
+    - Breakpoints rely on the persistence layer to save and restore the state of the
+      graph at specific points during execution.
+    - Breakpoints rely on the persistence layer to save the state of the graph after
+      each step, enabling stepping through execution and human-in-the-loop workflows.
+    strength:
+    - 7.5
+    - 8.0
+  ? !!python/tuple
+  - ChatModel
+  - AIMessage
+  : description:
+    - The `ChatModel` also interacts with `AIMessage`, which represents the response
+      from the Language Learning Model (LLM).
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - ChatModel
+  - HumanMessage
+  : description:
+    - The `ChatModel` accepts a list of `Message` objects, and specifically interacts
+      with `HumanMessage` as user input.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - ChatModel
+  - Message
+  : description:
+    - LangChain's `ChatModel` accepts a list of `Message` objects as inputs, facilitating
+      interaction with chat models.
+    strength:
+    - 9.0
+  ? !!python/tuple
+  - Cognitive Architecture
+  - StateGraph
+  : description:
+    - A cognitive architecture can be implemented using a StateGraph to process information
+      and configurations.
+    - The cognitive architecture is implemented using a StateGraph, which allows for
+      the creation and management of complex graph structures with configurable nodes
+      and edges.
+    strength:
+    - 7.0
+    - 9.0
+  ? !!python/tuple
+  - Command
+  - Conditional Edges
+  : description:
+    - Although 'Command' can achieve dynamic control flow similar to conditional edges,
+      the explicit relationship is not fully captured. This relationship should be
+      established to highlight their similarities and differences in achieving control
+      flow.
+    - Both 'Command' and 'Conditional Edges' can achieve dynamic control flow, but
+      their explicit relationship should be established to highlight their similarities
+      and differences.
+    strength:
+    - 6.0
+    - 8.0
+  ? !!python/tuple
+  - Command
+  - Node
+  : description:
+    - '`Command` can route to different nodes based on certain conditions.'
+    strength:
+    - 7.0
+  ? !!python/tuple
+  - Command
+  - Routing Function
+  : description:
+    - A Command combines state updates and routing in a single function, an alternative
+      to conditional edges.
+    strength:
+    - 9.0
+  ? !!python/tuple
+  - Command
+  - RunnableConfig
+  : description:
+    - The `Command` process uses configuration settings from `RunnableConfig`.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - Command
+  - State
+  : description:
+    - '`Command` allows for both state updates and control flow decisions within the
+      same node.'
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - Command
+  - ToolMessage
+  : description:
+    - The `Command` process includes `ToolMessage` objects in its update messages.
+    strength:
+    - 7.0
+  ? !!python/tuple
+  - Command
+  - human-in-the-loop
+  : description:
+    - Command is used to supply user input and resume execution when using interrupt()
+      in human-in-the-loop workflows.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - Command Object
+  - Graph
+  : description:
+    - A `Command` object, created using the value from the `interrupt` function, is
+      passed to a graph to resume its execution.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - Command Object
+  - Interrupt Function
+  : description:
+    - The command object is used to resume graph execution after an interrupt function
+      has been triggered, allowing the graph to continue based on user input or other
+      conditions.
+    strength:
+    - 7.0
+  ? !!python/tuple
+  - Compile Method
+  - Breakpoints
+  : description:
+    - The compile method may use breakpoints to pause and inspect the state of the
+      graph during execution.
+    strength:
+    - 7.0
+  ? !!python/tuple
+  - Compile Method
+  - Checkpointers
+  : description:
+    - The compile method may use checkpointers to save intermediate states of the
+      graph.
+    strength:
+    - 7.5
+  ? !!python/tuple
+  - Compiled Subgraph
+  - Parent Graph
+  : description:
+    - A compiled subgraph is a pre-compiled graph that can be directly added as a
+      node in a parent graph, requiring shared state keys for communication.
+    strength:
+    - 9.0
+  ? !!python/tuple
+  - Configuration
+  - ConfigSchema
+  : description:
+    - The configuration schema defines the schema for configuration settings in a
+      graph.
+    strength:
+    - 9.0
+  ? !!python/tuple
+  - Configuration
+  - Configurable Key
+  : description:
+    - The configurable key is used to define user-defined configuration settings in
+      a graph.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - Configuration Schema
+  - Configurable Key
+  : description:
+    - The configuration schema defines the structure of the configurable keys that
+      can be used in the graph. These keys are used to configure different aspects
+      of the graph's behavior.
+    strength:
+    - 7.0
+  ? !!python/tuple
+  - Customer Support Application
+  - State
+  : description:
+    - A common use case is updating graph state from inside a tool, such as looking
+      up customer information in a customer support application.
+    strength:
+    - 7.0
+  ? !!python/tuple
+  - Default Reducer
+  - State
+  : description:
+    - The Default Reducer updates the state based on partial updates from nodes without
+      specifying any reducer functions for keys.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - END Node
+  - StateGraph
+  : description:
+    - The END Node represents a terminal node in the graph, denoting which edges have
+      no actions after they are done.
+    strength:
+    - 7.0
+  ? !!python/tuple
+  - Edge
+  - Superstep
+  : description:
+    - All destination nodes of outgoing edges from a node are executed simultaneously
+      in the next superstep.
+    strength:
+    - 9.0
+  ? !!python/tuple
+  - Edges
+  - StateGraph
+  : description:
+    - Edges define how logic is routed and how the graph decides to stop, being a
+      crucial part of StateGraph.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - Graph
+  - Edges
+  : description:
+    - Edges connect nodes within the graph, facilitating data flow between them.
+    strength:
+    - 9.0
+  ? !!python/tuple
+  - Graph
+  - Input Schema
+  : description:
+    - The graph can have an explicit input schema that defines the structure of incoming
+      data.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - Graph
+  - JSON Schema
+  : description:
+    - The content discusses JSON Schema in the context of defining schemas, but this
+      relationship is not captured.
+    strength:
+    - 7.0
+  ? !!python/tuple
+  - Graph
+  - Nodes
+  : description:
+    - Nodes are components that make up the graph and interact with the state.
+    strength:
+    - 9.5
+  ? !!python/tuple
+  - Graph
+  - Output Schema
+  : description:
+    - The graph can have an explicit output schema that defines the structure of outgoing
+      data.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - Graph
+  - PrivateState
+  : description:
+    - Internal nodes within the graph may communicate using private state channels.
+    strength:
+    - 7.5
+  ? !!python/tuple
+  - Graph
+  - State
+  : description:
+    - The state of the graph, which includes the schema and reducer functions for
+      applying updates to the state.
+    strength:
+    - 9.0
+  ? !!python/tuple
+  - Graph
+  - YAML
+  : description:
+    - The content mentions using YAML for defining schemas, but this relationship
+      is not extracted.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - Graph Migrations
+  - Checkpointers
+  : description:
+    - The checkpointer is used to track state during graph migrations.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - Graph Rendering
+  - Command
+  : description:
+    - The graph rendering is necessary when using `Command` objects to route to different
+      nodes.
+    strength:
+    - 6.0
+  ? !!python/tuple
+  - Graph Rendering
+  - Send
+  : description:
+    - The relationship between 'Graph Rendering' and 'Send' is important for understanding
+      the rendering process when using 'Send'.
+    strength:
+    - 7.0
+  ? !!python/tuple
+  - Graph State
+  - Message Objects
+  : description:
+    - The graph state stores a list of message objects.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - Habit
+  - Sustainable Alternative
+  : description:
+    - The relationship between 'Habit' and 'Sustainable Alternative' is implied by
+      the concept of replacing an existing habit with a more environmentally friendly
+      alternative to promote sustainability.
+    strength:
+    - 7.0
+  ? !!python/tuple
+  - Human-in-the-Loop Workflows
+  - Interrupt Function
+  : description:
+    - The interrupt function is a key component for enabling human-in-the-loop workflows,
+      allowing developers to collect user input and make decisions before resuming
+      graph execution.
+    strength:
+    - 9.0
+  ? !!python/tuple
+  - InputState
+  - OverallState
+  : description:
+    - InputState is connected to OverallState through nodes that read from InputState
+      and write to OverallState, as demonstrated in node_1.
+    strength:
+    - 6.0
+  ? !!python/tuple
+  - InputState
+  - node_1
+  : description:
+    - node_1 takes an InputState as input and processes it.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - Interrupt Function
+  - Command Object
+  : description:
+    - The `interrupt` function returns a value that is used to create a `Command`
+      object, which is then passed to the graph to resume execution.
+    strength:
+    - 9.0
+  ? !!python/tuple
+  - Interrupt Function
+  - Human-in-the-Loop Workflows
+  : description:
+    - The `interrupt` function is used in human-in-the-loop workflows to pause graph
+      execution and collect user input or validate the graph state before resuming.
+    strength:
+    - 8.5
+  ? !!python/tuple
+  - JSON Schema
+  - Compiled Subgraph
+  : description:
+    - JSON Schema can be used to validate the structure of compiled subgraphs.
+    strength:
+    - 7.0
+  ? !!python/tuple
+  - JSON Schema
+  - Data Validation
+  : description:
+    - JSON Schema is used for data validation, but it does not have a direct relationship
+      with the entities in this context.
+    strength:
+    - 3.0
+  ? !!python/tuple
+  - JSON Schema
+  - Parent Graph
+  : description:
+    - JSON Schema can be used to validate the structure of parent graphs.
+    strength:
+    - 7.0
+  ? !!python/tuple
+  - JSON Schema
+  - Shared Keys
+  : description:
+    - JSON Schema can be used to validate the structure of shared keys between parent
+      graphs and subgraphs.
+    strength:
+    - 7.0
+  ? !!python/tuple
+  - JSON Schema
+  - State Schema
+  : description:
+    - JSON Schema is commonly used to define and validate state schemas.
+    strength:
+    - 9.0
+  ? !!python/tuple
+  - JSON Schema
+  - Subgraph Node Function
+  : description:
+    - JSON Schema can be used to validate the structure of subgraph node functions.
+    strength:
+    - 7.0
+  ? !!python/tuple
+  - JSON Schema
+  - Subgraphs
+  : description:
+    - JSON Schema can be used to validate the structure of subgraphs.
+    strength:
+    - 7.0
+  ? !!python/tuple
+  - JSON Schema
+  - Transform State
+  : description:
+    - JSON Schema can be used to define and validate state transformation rules.
+    strength:
+    - 7.0
+  ? !!python/tuple
+  - JSON Serializable Value
+  - Command Object
+  : description:
+    - The value returned by the `interrupt` function is typically a JSON serializable
+      object that is used to create a `Command` object.
+    strength:
+    - 7.5
+  ? !!python/tuple
+  - LangGraph
+  - Command
+  : description:
+    - LangGraph provides a way to combine control flow and state updates using `Command`
+      objects.
+    strength:
+    - 9.0
+  ? !!python/tuple
+  - LangGraph
+  - Edges
+  : description:
+    - LangGraph uses Python functions called `Edges` to determine which `Node` to
+      execute next based on the current `State`.
+    strength:
+    - 9.0
+  ? !!python/tuple
+  - LangGraph
+  - Message Passing
+  : description:
+    - LangGraph's underlying graph algorithm uses message passing to define a general
+      program, where nodes send messages along edges.
+    strength:
+    - 8.5
+  ? !!python/tuple
+  - LangGraph
+  - Nodes
+  : description:
+    - LangGraph models agent workflows using Python functions called `Nodes`, which
+      encode the logic of agents.
+    strength:
+    - 9.0
+  ? !!python/tuple
+  - LangGraph
+  - OverallState
+  : description:
+    - LangGraph supports returning 'Send' objects from conditional edges, which can
+      be used to pass state information to downstream nodes.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - LangGraph
+  - Pregel
+  : description:
+    - LangGraph is inspired by Google's Pregel system for large-scale graph processing.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - LangGraph
+  - Send
+  : description:
+    - LangGraph supports returning `Send` objects from conditional edges.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - LangGraph
+  - State
+  : description:
+    - LangGraph uses a shared data structure called `State` to represent the current
+      snapshot of your application.
+    strength:
+    - 9.0
+  ? !!python/tuple
+  - LangGraph
+  - Super-Steps
+  : description:
+    - LangGraph uses super-steps in its algorithm to process the graph iteratively.
+    strength:
+    - 7.5
+  ? !!python/tuple
+  - Map-Reduce Design Pattern
+  - StateGraph
+  : description:
+    - The map-reduce design pattern is an example where the exact edges are not known
+      ahead of time, similar to how StateGraph can handle dynamic states.
+    strength:
+    - 7.5
+  ? !!python/tuple
+  - Message
+  - AIMessage
+  : description:
+    - '`AIMessage` is a specific type of message representing the response from an
+      LLM (Large Language Model) in a chat interaction.'
+    strength:
+    - 7.0
+  ? !!python/tuple
+  - Message
+  - HumanMessage
+  : description:
+    - '`HumanMessage` is a specific type of message representing user input in a chat
+      interaction.'
+    strength:
+    - 7.0
+  ? !!python/tuple
+  - MessageGraph
+  - State
+  : description:
+    - The `State` of a `MessageGraph` is ONLY a list of messages, which makes it suitable
+      for chatbots but not for most other applications.
+    strength:
+    - 7.5
+  ? !!python/tuple
+  - MessagesState
+  - Graph State
+  : description:
+    - MessagesState is a prebuilt state that simplifies using messages in the graph
+      state.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - MessagesState
+  - State
+  : description:
+    - The State class is a subclass of MessagesState that adds additional fields,
+      such as documents.
+    strength:
+    - 9.0
+  ? !!python/tuple
+  - Multi-Agent Handoffs
+  - Command
+  : description:
+    - '`Command` can be used in scenarios involving multi-agent handoffs.'
+    strength:
+    - 5.0
+  ? !!python/tuple
+  - Multi-Agent Systems
+  - Subgraphs
+  : description:
+    - Subgraphs can be used to build multi-agent systems by encapsulating different
+      parts of the system into separate subgraphs that interact with each other.
+    strength:
+    - 7.0
+  ? !!python/tuple
+  - Node
+  - Edge
+  : description:
+    - A node can have multiple outgoing edges.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - Node
+  - Player
+  : description:
+    - The relationship between 'Node' and 'Player' can be inferred from the context
+      of graph theory where a node can represent a player in a game or simulation.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - Node
+  - State
+  : description:
+    - Nodes return partial updates to the state, which are then applied by the reducer.
+    strength:
+    - 7.5
+  ? !!python/tuple
+  - Nodes
+  - Graph
+  : description:
+    - Nodes are fundamental components that make up graphs, and graphs consist of
+      multiple nodes connected by edges.
+    strength:
+    - 10.0
+  ? !!python/tuple
+  - Nodes
+  - RunnableConfig
+  : description:
+    - Nodes can optionally take a config argument containing configurable parameters
+      like thread_id.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - Nodes
+  - Subgraphs
+  : description:
+    - Nodes can be part of subgraphs, which are themselves graphs used as nodes in
+      other graphs.
+    strength:
+    - 9.0
+  ? !!python/tuple
+  - Operator.add
+  - Reducer Functions
+  : description:
+    - Operator.add can be used as a simple reducer function to append messages to
+      an existing list.
+    strength:
+    - 7.0
+  ? !!python/tuple
+  - OverallState
+  - node_2
+  : description:
+    - node_2 reads from the "foo" channel of OverallState and processes it.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - PrivateState
+  - StateGraph
+  : description:
+    - PrivateState can be declared within the graph by nodes, even if it was not passed
+      during StateGraph initialization, as long as its schema is defined.
+    strength:
+    - 5.0
+  ? !!python/tuple
+  - PrivateState
+  - node_3
+  : description:
+    - node_3 reads from the "bar" channel of PrivateState and processes it.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - Recursion Limit
+  - Graph
+  : description:
+    - The recursion limit is a configuration parameter that can be set when invoking
+      a graph, affecting its execution behavior.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - Recursion Limit
+  - GraphRecursionError
+  : description:
+    - When the recursion limit is reached, LangGraph raises a GraphRecursionError.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - Recursion Limit
+  - Recursion Limit Key
+  : description:
+    - The recursion limit key is a standalone configuration setting for the recursion
+      limit.
+    strength:
+    - 9.0
+  ? !!python/tuple
+  - Recursion Limit
+  - Super-Steps
+  : description:
+    - The recursion limit sets the maximum number of super-steps the graph can execute
+      during a single execution. Once the limit is reached, LangGraph will raise GraphRecursionError.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - Reducer Functions
+  - Graph State
+  : description:
+    - The reducer function updates the list of messages in the graph state with each
+      state update.
+    strength:
+    - 9.0
+  ? !!python/tuple
+  - Reducers
+  - OverallState
+  : description:
+    - Reducers are key to understanding how updates from nodes are applied to the
+      OverallState.
+    - Reducers update specific channels within OverallState by applying reducer functions
+      to each key in the State.
+    strength:
+    - 8.0
+    - 8.0
+  ? !!python/tuple
+  - Reducers
+  - PrivateState
+  : description:
+    - Reducers are also involved in applying updates to the PrivateState.
+    - Reducers update specific channels within PrivateState similarly to how they
+      update OverallState, using reducer functions for each key.
+    strength:
+    - 7.0
+    - 7.0
+  ? !!python/tuple
+  - Routing Function
+  - Node
+  : description:
+    - A routing function determines the next node(s) to execute based on the current
+      state of the graph.
+    strength:
+    - 8.5
+  ? !!python/tuple
+  - RunnableConfig
+  - get_user_info
+  : description:
+    - RunnableConfig is utilized within the get_user_info function to extract necessary
+      configuration details, such as user IDs, required for fetching user information.
+    strength:
+    - 9.0
+  ? !!python/tuple
+  - RunnableConfig
+  - lookup_user_info
+  : description:
+    - RunnableConfig is used as a parameter in the lookup_user_info function to configure
+      and pass user-specific information for looking up user details.
+    strength:
+    - 9.0
+  ? !!python/tuple
+  - RunnableLambda
+  - Nodes
+  : description:
+    - Functions are converted to RunnableLambda objects, which add batch and async
+      support to nodes.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - START
+  - Node
+  : description:
+    - The entry point is the first node(s) that are run when the graph starts, specified
+      using the virtual START node.
+    strength:
+    - 8.5
+  ? !!python/tuple
+  - START Node
+  - StateGraph
+  : description:
+    - The START Node represents the entry point where user input is sent to the graph.
+    strength:
+    - 7.0
+  ? !!python/tuple
+  - Schema
+  - PrivateState
+  : description:
+    - While the content mentions using a private schema for internal node communication,
+      the strength or explicitness of this relationship could be better defined.
+    strength:
+    - 6.0
+  ? !!python/tuple
+  - Schema
+  - Pydantic Model
+  : description:
+    - A schema can also be defined using a Pydantic model, providing additional validation
+      and features.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - Schema
+  - TypedDict
+  : description:
+    - A schema can be defined using a TypedDict, which specifies the structure of
+      the data.
+    strength:
+    - 8.5
+  ? !!python/tuple
+  - Send
+  - Conditional Edges
+  : description:
+    - The content mentions that 'Send' objects are returned from conditional edges,
+      indicating a relationship between these two entities.
+    strength:
+    - 7.0
+  ? !!python/tuple
+  - Send
+  - Node
+  : description:
+    - '`Send` takes two arguments: the name of the node and the state to pass to that
+      node.'
+    strength:
+    - 7.0
+  ? !!python/tuple
+  - Serialization
+  - LangChain Messages
+  : description:
+    - Serialization converts messages into a format that can be easily stored or transmitted,
+      allowing for state updates in the graph.
+    strength:
+    - 8.5
+  ? !!python/tuple
+  - Shared Keys
+  - Parent Graph
+  : description:
+    - Shared keys are necessary for communication between a subgraph and its parent
+      graph when adding the subgraph directly as a node.
+    strength:
+    - 9.0
+  ? !!python/tuple
+  - State
+  - Persistence Layer
+  : description:
+    - The state of a graph is managed by the persistence layer, which saves and retrieves
+      it during execution.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - State
+  - Reducer Functions
+  : description:
+    - Reducer functions are used to apply updates to the state of the graph.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - State
+  - Schema
+  : description:
+    - The schema defines the structure of the data used in the graph.
+    strength:
+    - 8.5
+  ? !!python/tuple
+  - State Schema
+  - Subgraphs
+  : description:
+    - The state schema defines the structure of the state used within a subgraph,
+      specifying the keys and their types required for state management.
+    strength:
+    - 8.5
+  ? !!python/tuple
+  - StateGraph
+  - Conditional Edges
+  : description:
+    - The StateGraph supports conditional edges, which allow optional routing to one
+      or more edges.
+    strength:
+    - 9.0
+  ? !!python/tuple
+  - StateGraph
+  - END
+  : description:
+    - END is a part of the StateGraph and marks the conclusion of the process.
+    strength:
+    - 6.0
+  ? !!python/tuple
+  - StateGraph
+  - Edges
+  : description:
+    - Edges connect nodes in a StateGraph, defining the flow of processing.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - StateGraph
+  - Nodes
+  : description:
+    - Nodes are added to the graph using the add_node method of StateGraph.
+    - A StateGraph consists of nodes that process state and configuration.
+    strength:
+    - 9.0
+    - 9.0
+  ? !!python/tuple
+  - StateGraph
+  - Parent Graph
+  : description:
+    - StateGraph is used to define and manage both subgraphs and parent graphs, indicating
+      a direct interaction between them.
+    strength:
+    - 8.5
+  ? !!python/tuple
+  - StateGraph
+  - START
+  : description:
+    - START is a part of the StateGraph and marks the beginning of the process.
+    strength:
+    - 6.0
+  ? !!python/tuple
+  - StateGraph
+  - State
+  : description:
+    - The `State` of a `StateGraph` is more complex than just a list of messages,
+      making it suitable for most applications.
+    - The state is processed by nodes within a StateGraph.
+    strength:
+    - 8.0
+    - 9.0
+  ? !!python/tuple
+  - StateGraph
+  - Subgraphs
+  : description:
+    - StateGraph is the framework or tool used to define and manage both subgraphs
+      and their parent graphs.
+    strength:
+    - 7.0
+  ? !!python/tuple
+  - Subgraph Node Function
+  - Parent Graph
+  : description:
+    - A subgraph node function is used to invoke a subgraph with a completely different
+      schema, requiring transformation of states between the subgraph and its parent
+      graph.
+    strength:
+    - 8.5
+  ? !!python/tuple
+  - Subgraphs
+  - Graph
+  : description:
+    - A subgraph is a type of graph that is used as a node in another graph, allowing
+      for encapsulation and reuse of nodes.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - Subgraphs
+  - Multi-Agent Systems
+  : description:
+    - Subgraphs can be used to build multi-agent systems by defining different parts
+      of the system as separate subgraphs that communicate through well-defined interfaces.
+    strength:
+    - 7.5
+  ? !!python/tuple
+  - Subgraphs
+  - Parent Graph
+  : description:
+    - A subgraph can be added directly as a node in a parent graph or through a function
+      that invokes the subgraph.
+    strength:
+    - 8.0
+  ? !!python/tuple
+  - ToolNode
+  - Command
+  : description:
+    - The `ToolNode` prebuilt component automatically handles tools returning `Command`
+      objects.
+    strength:
+    - 9.0
+  ? !!python/tuple
+  - ToolNode
+  - human-in-the-loop
+  : description:
+    - ToolNode automatically handles tools returning Command objects and propagates
+      them to the graph state, which is important for understanding the full scope
+      of human-in-the-loop interactions.
+    - ToolNode interacts with human-in-the-loop workflows by automatically handling
+      tools returning Command objects and propagating them to the graph state, which
+      is crucial for resuming execution after user input collection.
+    strength:
+    - 9.0
+    - 8.0
+  ? !!python/tuple
+  - Transform State
+  - Subgraph Node Function
+  : description:
+    - The transform state is used by a subgraph node function to convert the input
+      (parent) state to the subgraph state before invoking the subgraph and then converting
+      the results back to the parent state.
+    strength:
+    - 9.5
+  ? !!python/tuple
+  - YAML
+  - Compiled Subgraph
+  : description:
+    - YAML might be used for configuring compiled subgraphs, although this relationship
+      is not explicitly stated in the content.
+    strength:
+    - 6.0
+  ? !!python/tuple
+  - YAML
+  - Configuration
+  : description:
+    - YAML can be used for configuration files, but it does not have a direct relationship
+      with the entities in this context.
+    strength:
+    - 3.0
+  ? !!python/tuple
+  - YAML
+  - Parent Graph
+  : description:
+    - YAML might be used for configuring parent graphs, although this relationship
+      is not explicitly stated in the content.
+    strength:
+    - 6.0
+  ? !!python/tuple
+  - YAML
+  - Shared Keys
+  : description:
+    - YAML might be used for configuring shared keys between parent graphs and subgraphs,
+      although this relationship is not explicitly stated in the content.
+    strength:
+    - 6.0
+  ? !!python/tuple
+  - YAML
+  - State Schema
+  : description:
+    - YAML might be used for defining state schemas, although this relationship is
+      not explicitly stated in the content.
+    strength:
+    - 6.0
+  ? !!python/tuple
+  - YAML
+  - Subgraph Node Function
+  : description:
+    - YAML might be used for configuring subgraph node functions, although this relationship
+      is not explicitly stated in the content.
+    strength:
+    - 6.0
+  ? !!python/tuple
+  - YAML
+  - Subgraphs
+  : description:
+    - YAML might be used for configuring subgraphs, although this relationship is
+      not explicitly stated in the content.
+    strength:
+    - 6.0
+  ? !!python/tuple
+  - YAML
+  - Transform State
+  : description:
+    - YAML might be used for defining state transformation rules, although this relationship
+      is not explicitly stated in the content.
+    strength:
+    - 6.0
+  ? !!python/tuple
+  - human-in-the-loop
+  - interrupt()
+  : description:
+    - The `human-in-the-loop` concept involves using the `interrupt()` process to
+      collect user input.
+    strength:
+    - 6.0
+  ? !!python/tuple
+  - lookup_user_info
+  - get_user_info
+  : description:
+    - The `lookup_user_info` function calls `get_user_info` to retrieve user information.
+    strength:
+    - 9.0
+  ? !!python/tuple
+  - node_1
+  - OverallState
+  : description:
+    - node_1 writes to the "foo" channel of OverallState.
+    strength:
+    - 9.0
+  ? !!python/tuple
+  - node_2
+  - PrivateState
+  : description:
+    - node_2 writes to the "bar" channel of PrivateState.
+    strength:
+    - 9.0
+  ? !!python/tuple
+  - node_3
+  - OutputState
+  : description:
+    - node_3 writes to the OutputState, though not explicitly defined in the schema.
+    strength:
+    - 7.0
